@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Return & Refund Policy | Ripe'n Red</title>
+  <meta name="description" content="Learn about Ripe'n Red's return and refund policy for fresh, handpicked produce. We ensure transparency and customer satisfaction in all refund cases.">
+  <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Return & Refund Policy | Ripe'n Red">
+  <meta property="og:description" content="Learn about Ripe'n Red's return and refund policy for fresh, handpicked produce.">
+  <meta property="og:image" content="https://ripenred.com/assets/images/logo1.webp">
+  <meta property="og:url" content="https://ripenred.com/returns.html">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Return & Refund Policy | Ripe'n Red">
+  <meta name="twitter:description" content="Learn about our return and refund process for perishable produce at Ripe'n Red.">
+  <meta name="twitter:image" content="https://ripenred.com/assets/images/logo1.webp">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "Return & Refund Policy",
+    "url": "https://ripenred.com/returns.html",
+    "description": "Return and refund policy for fresh produce sold by Ripe'n Red.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "Ripe'n Red",
+      "url": "https://ripenred.com",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://ripenred.com/assets/images/logo1.webp"
+      }
+    }
+  }
+  </script>
+
+  <!-- Styles & Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/additional.css">
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+
+<body>
+  <section class="text-carousel">
+  <div class="carousel-text">
+    <div class="announcement">"Cultivating Brilliance in Khadrala’s Verdant Heights"</div>
+    <div class="announcement">Get 20% off on your first purchase! <strong>Limited time only!</strong></div>
+    <div class="announcement">Exclusive fresh arrivals this season!</div>
+    <div class="announcement">Shop sustainably—handpicked quality guaranteed!</div>
+  </div>
+</section>
+
+<section class="header-top">  <!--dashboard on left-->
+        <div class="dashboard-container">
+            <a href="dashboard.html">
+                <i class="fa fa-user navlogo" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div id="searchbar" class="searchbarcontainer">
+        <input type="text" id="searchbox" placeholder="Type to search eg. Honey Crisp" />
+         <button id="searchsubmit">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+   
+<div id="searchcontainer" style="display: none;">
+        <h2>Search Results</h2>
+        <div id="searchresults"></div>
+    </div>
+    </div>
+    <div class="top-logo">
+                <a href="index.html"><img src="assets/images/logo1.webp" alt="logo"></a>
+            
+            </div>
+            <div class="header-right-top">
+             <div class="wishlist-container">
+                <a href="wishlist.html">
+                    <i class="fa fa-heart navlogo" aria-hidden="true"></i>
+                    <span class="iconlabel">Wishlist</span>
+                </a>
+            </div>
+            <div class="cart-container">
+                <a href="cart.html">
+                    <i class="fa fa-shopping-cart navlogo" aria-hidden="true"></i>
+                    <span class="iconlabel">Cart</span>
+                </a>
+            </div>
+            </div>
+       
+</section>
+        <header>
+        
+        <!-- Menu Button for Mobile -->
+        <div id="menu-bar" class="menu-bar">
+            <button id="menu-toggle" class="menu-toggle">☰</button>
+        </div>
+    
+        <!-- Side Menu Container -->
+        <div id="side-menu" class="side-menu">
+              <!-- Add the Dashboard badge here -->
+            <div class="menu-logo">
+                <a href="index.html"><img src="assets/images/logo1.webp" alt="logo"></a>
+            
+            </div>
+            <div class="dashboard-container">
+                <a href="dashboard.html">
+                    <i class="fa fa-user user-logo" aria-hidden="true"></i>
+                     <span class="menuiconlabel">user</span>
+                </a>
+            </div>
+           
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+               
+                <li><a href="contact.html">Contact Us</a></li>
+            </ul>
+            
+        </div>
+    
+    
+        <!-- Add the Dashboard badge here -->
+            <div class="mid-logo">
+                <a href="index.html"><img src="assets/images/logo1.webp" alt="logo"></a>
+            
+            </div>
+      
+        <!-- Navigation Links (Desktop) -->
+        <div class="nav-links">
+            <nav>
+                
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                   
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+                <!-- Search Bar (Hidden Initially) -->
+       <div id="search-bar" class="search-bar-container">
+        <input type="text" id="search-box" placeholder="Type to search eg. Honey Crisp" />
+    <button id="search-submit">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+
+    </div>
+    
+        <!-- Cart & Wishlist on the Right -->
+        <div class="header-right">
+            <!-- Search Button -->
+            <div id="search-btn">
+                <i class="fa fa-search nav-logo" aria-hidden="true"></i> 
+                <span class="icon-label">Search</span>
+            </div>
+            <div class="wishlist-container">
+                <a href="wishlist.html">
+                    <i class="fa fa-heart nav-logo" aria-hidden="true"></i>
+                    <span class="icon-label">Wishlist</span>
+                </a>
+            </div>
+            <div class="cart-container">
+                <a href="cart.html">
+                    <i class="fa fa-shopping-cart nav-logo" aria-hidden="true"></i>
+                    <span class="icon-label">Cart</span>
+                </a>
+                <span id="cart-count" class="cart-count"></span>
+            </div>
+        </div>
+    </header>
+    <div id="search-container" style="display: none;">
+        <h2>Search Results</h2>
+        <div id="search-results"></div>
+    </div><section class="return-policy">
+  <h1>Return & Refund Policy</h1>
+  <p><strong>Effective Date:</strong> June 12, 2025</p>
+
+  <p>At <strong>Ripe'n Red</strong>, we grow and deliver fresh farm produce directly to your doorstep. Due to the perishable nature of our products, we follow a strict return and cancellation policy as outlined below:</p>
+
+  <h2>1. No Returns</h2>
+  <p>We do not accept returns on any product once delivered, as our items are perishable and meant for immediate consumption. Please ensure someone is available to receive the order at the scheduled delivery time.</p>
+
+  <h2>2. No Cancellations</h2>
+  <p>Orders once placed cannot be canceled or modified, as we begin harvesting and packing immediately to ensure optimal freshness and timely delivery.</p>
+
+  <h2>3. Refunds (Conditional)</h2>
+  <ul>
+    <li>Refunds are issued only in genuine cases such as wrong product delivery, damaged items, or complete non-delivery.</li>
+    <li>Customers must contact our <a href="contact.html">Help Center</a> within 24 hours of delivery, providing photographic evidence and order details.</li>
+    <li>After reviewing the issue, our support team may approve a full or partial refund based on the severity and verification of the case.</li>
+  </ul>
+
+  <h2>4. Late or Missing Refunds</h2>
+  <ul>
+    <li>Once approved, refunds will be processed to your original payment method within 5–7 business days.</li>
+    <li>If the refund is not received within this period, please check with your bank first. If issues persist, contact us at <a href="mailto:riipenred@gmail.com">riipenred@gmail.com</a>.</li>
+  </ul>
+
+  <h2>5. Quality Commitment</h2>
+  <p>We stand behind the quality of our produce. Each order is hand-picked and packed fresh. If you're dissatisfied with any aspect of your order, we encourage you to reach out—we’re here to make it right.</p>
+
+  <h2>6. Contact</h2>
+  <p>For any refund-related queries, feel free to contact us at <a href="mailto:riipenred@gmail.com">riipenred@gmail.com</a>.</p>
+</section>
+
+
+ <footer class="site-footer">
+  <div class="footer-content">
+
+    <!-- Column 1: Logo + Sustainability -->
+    <div class="footer-branding">
+      <img src="assets/images/logo2.png" alt="Fresh Apples Logo" class="footer-logo" />
+      <p class="footer-sustainability">
+        Proudly promoting sustainable farming practices to protect our planet.
+      </p>
+    </div>
+
+    <!-- Column 2: Quick Links -->
+    <div class="footer-section">
+  <h3>Quick Links</h3>
+  <div class="footer-link-group">
+    <a href="about.html">About Us</a>
+    <a href="shop.html">Shop</a>
+    <a href="contact.html">Contact Us</a>
+    <a href="policy.html">Privacy Policy</a>
+    <a href="terms.html">Terms & Conditions</a>
+  </div>
+</div>
+
+<div class="footer-section">
+  <h3>Customer Support</h3>
+  <div class="footer-link-group">
+   <a href="contact.html#faq">FAQ</a>
+    <a href="contact.html">Help Center</a>
+    <a href="returns.html">Return Policy</a>
+     <a href="shippinhg-policy.html">Shipping Policy</a>
+  </div>
+</div>
+
+    <!-- Column 4: Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="footer-social-links">
+        <a href="https://www.facebook.com/ripenred/" target="_blank" class="footer-social-icon"><i class="fab fa-facebook-f"></i> Facebook</a>
+        <a href="https://www.instagram.com/ripe_n_red/" target="_blank" class="footer-social-icon"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://x.com/ripe_n_red" target="_blank" class="footer-social-icon"><i class="fab fa-twitter"></i> Twitter</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy;  2025 | Ripe'n Red</p>
+  </div>
+</footer>
+<script>
+  // Wait for everything (images, fonts, etc.) to fully load
+  window.addEventListener("load", function () {
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) {
+        // Delay and use requestAnimationFrame to ensure smooth scroll after full render
+        setTimeout(() => {
+          requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        }, 200);
+      }
+    }
+  });
+</script>
+
+<script src="assets/header.js"></script>    
+
+
+</body>
+</html>

@@ -1,0 +1,709 @@
+/* General Styles */
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&family=Unbounded:wght@400;500;600;700&display=swap');
+/* Falling Fruits Styling */
+html {
+    scroll-behavior: smooth;
+}
+body {
+    background: #ffffff; /* Soft, creamy pastel yellow */
+    color: #3D2B1F; /* Rich deep brown for readability */
+    font-family: 'Poppins', sans-serif;
+    font-weight: lighter;
+}
+a {
+    display: inline-block; /* Makes the <a> tag behave like a block */
+    width:auto; /* Ensures it takes full width of the button */
+    text-decoration: none; /* Removes any default underline */
+}
+
+h1,h2, h3, h4, h5, h6 {
+    color: #444444; /* Bold, rich burnt orange */
+    letter-spacing: 1px;
+    font-family: 'Secular one', sans-serif;
+    font-weight: normal;
+}
+
+.header-top{
+    
+    justify-content: center;
+    flex-direction: row;
+    align-items: center;
+ 
+
+}
+.top-logo{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height:auto;
+   
+
+}
+
+.top-logo a img {
+    width: 12rem; /* Adjust size as needed */
+    height: auto; /* Maintains aspect ratio */
+    transition: transform 0.3s ease-in-out; /* Smooth hover effect */
+    padding: 10px;
+}
+
+.top-logo a img:hover {
+    transform: scale(1.03); /* Slight zoom on hover */
+}
+
+
+/* Default (Relative State) Styling */
+header {
+  display: flex;
+  justify-content: center; /* Ensure consistent alignment */
+  text-align: center; /* Maintain vertical alignment */
+  padding: 5px 40px; /* Set consistent padding */
+background: #A91101;
+  position: relative; /* Default state */
+  width: 100%; /* Ensure width is fixed */
+  height: 3rem; /* Consistent height */
+  box-sizing: border-box; /* Prevent padding/margin inconsistencies */
+  z-index: 1000; /* Ensure visibility */
+  overflow: hidden;
+  border-bottom: solid 1px  #A91101; /* Ensure consistent border */
+  transition: background-color 0.3s ease, height 0.3s ease; /* Smooth transitions */
+
+  h1{
+    color: white;
+    font-weight: bolder;
+  }
+}
+
+
+/* Fixed State */
+.fixed {
+  display: flex; /* Match relative state */
+  justify-content: space-between; /* Match alignment */
+    gap:0rem;
+  align-items: center; /* Match alignment */
+  padding: 5px 40px; /* Exact same padding */
+  background: rgb(255, 255, 255); /* Exact same background */
+  position: fixed; /* Locks the header */
+  top: 0;
+  width: 100%; /* Exact same width */
+  height: 3.8rem; /* Exact same height */
+  box-sizing: border-box; /* Prevent inconsistencies */
+  z-index: 1000;
+  border-bottom: solid 1px  #A91101; /* Match relative state */
+  
+   h1{
+    color:#444444;
+     font-weight: bolder;
+   }
+}
+
+.text-carousel {
+  display: flex;
+  align-items: center;
+  background: #fcedda;
+  color: #ff6a32;
+  padding: 0px;
+  overflow: hidden;
+  position: relative;
+  max-width: 100%;
+}
+
+.carousel-text{
+  position: relative;
+  width: 100%;
+  height: 1.5rem;
+  padding: 0;
+  overflow: hidden;
+
+}
+
+.announcement {
+  position:absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 400;
+  opacity: 0;
+  transform: translateX(100%);
+  transition: all 0.5s linear;
+}
+
+.announcement.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.announcement.exit-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.announcement.exit-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+  .intro-section h8 {
+      position: relative;
+      font-size: 13px;
+      color: #ffffff; /* Minimal heading color */
+      margin-bottom: 0px;
+     
+  }
+  .intro-section h9 {
+      position: relative;
+      font-size: 13px;
+      color: #ffffff; /* Minimal heading color */
+      margin-bottom: 0px;
+     
+  }
+
+/* Centered Logo */
+.logo {
+    flex: 1;
+    display: flex;
+    justify-content: left; /* Center the logo */
+    text-align: center;
+    position: absolute;
+    top: 10px;
+    left: 50vw;
+    transform: translateX(-50%);
+}
+
+
+.logo h1 {
+    margin: 0;
+    font-size: 24px;
+}
+
+
+/* Ensure body and html take full height */
+html, body {
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    overflow: hidden;
+    overflow-y: auto;
+    flex-direction: column;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* Make the main content section expand to push footer down */
+.container {
+    flex: 1;
+}
+
+.checkout-container {
+    display: flex;
+    justify-content: space-between; /* Ensures left & right sections */
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    max-width: 95vw;
+    margin: auto;
+}
+
+/* Left Section: Billing & Shipping Form */
+.checkout-form {
+    flex: 1;
+    background: white;
+    padding: 50px;
+    border-radius: 10px;
+    border: #cb1919 solid 1px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   width: 55vw;
+}
+
+
+
+/* Label Styling */
+#checkoutForm label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Input, Select, and Textarea Styling */
+#checkoutForm input,
+#checkoutForm select,
+#checkoutForm textarea {
+    width: 100%;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 4px;
+    transition: border 0.2s ease-in-out;
+}
+
+#checkoutForm input:focus,
+#checkoutForm select:focus,
+#checkoutForm textarea:focus {
+    border-color: #006837; /* Highlight on focus */
+    outline: none;
+    box-shadow: 0 0 5px rgba(0, 121, 107, 0.2);
+}
+
+/* Error Message Styling */
+.error-message {
+    color: #ff3300;
+    font-size: 0.9rem;
+    margin-top: -10px;
+    margin-bottom: 10px;
+}
+/* Saved Addresses Section - Ensure it is clearly visible */
+/* Container for Saved Addresses */
+#saved-addresses {
+    background: transparent;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    max-width: 100%;
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between address items */
+}
+/* Individual Address Item */
+.address-item {
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border: 1px solid #cb1919;;
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Hover Effect for Address Item */
+.address-item:hover {
+    border-color: #007bff;
+    background: #eef5ff;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2);
+}
+
+/* Hide Default Radio Button */
+.address-item input[type="radio"] {
+    display:none; /* Radio button remains invisible */
+}
+
+/* Persist Highlight for Selected Address */
+.address-item input[type="radio"]:checked + label {
+    border-left: 4px solid #007bff;
+    padding-left: 10px;
+    color: #007bff;
+    background: #eef5ff;
+    box-shadow: 0 2px 5px rgba(0, 123, 255, 0.2); /* Keep shadow for emphasis */
+}
+
+/* Label Styling */
+.address-item label {
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    color: #333;
+}
+
+
+/* Styling for User Name */
+.address-item strong {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+}
+
+/* Responsive Design for Smaller Screens */
+@media screen and (max-width: 768px) {
+    .address-item {
+        font-size: 12px;
+        padding: 10px;
+    }
+
+    .address-item label {
+        gap: 3px;
+    }
+
+    address-item strong {
+        font-size: 14px;
+    }
+}
+
+/* Right Section: Order Summary */
+.order-summary {
+    width: 550px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border: #cb1919 solid 1px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Order Summary Styling */
+.order-summary h2 {
+    border-bottom: 1px solid #cb1919;
+    padding-bottom: 10px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 0;
+    border-bottom: 1px solid  #eaeaea;
+}
+
+.product-image {
+    width: 70px;
+    height: 70px;
+    margin-right: 15px;
+    border-radius: 10px;
+}
+
+.product-details {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 20px;
+}
+
+.product-name {
+    font-size: 1.3em;
+    flex: 2;
+}
+
+.product-quantity, .product-price {
+    font-size: 1.3em;
+    flex: 1;
+    text-align: center;
+}
+.order-summary h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 15px;
+    padding-top: 10px;
+    text-align: right;
+}
+.order-summary .order-total {
+  font-size: 18px;
+  font-weight: 600;
+  color: #006837;
+  text-align: right;
+  margin-bottom: 10px;
+  border-bottom: 1px dashed #ccc;
+  padding-bottom: 6px;
+}
+
+#saveAddress{
+    display: block;
+    text-decoration:none;
+    cursor: pointer;
+    width: 200px;
+    justify-self:center;
+    text-align: center;
+    padding: 10px 15px;
+    background: #006837; 
+    color: white;
+    border: 2px solid transparent;
+    font-size: 20px;
+    font-weight: normal;
+    border-radius: 5px;
+    margin: 10px auto;
+    transition: all 0.3s ease-in-out;
+
+}
+#saveAddress:hover{
+    background: white;
+    color:#006837;
+    border-color: #006837;
+    box-shadow: 0px 5px 15px rgba(10, 48, 6, 0.4);
+    transform: translateY(-2px)
+
+}
+
+
+/* Button Styling */
+#proceedToPayment {
+    display: block;
+    text-decoration:none;
+    cursor: pointer;
+    width: 400px;
+    justify-self:center;
+    text-align: center;
+    padding: 10px 15px;
+    background: #006837; 
+    color: white;
+    border: 2px solid transparent;
+    font-weight: normal;
+    border-radius: 5px;
+    margin: 10px auto;
+    font-size: 20px;
+    transition: all 0.3s ease-in-out;
+}
+
+#proceedToPayment:hover {
+    background: white;
+    color:#006837;
+    border-color: #006837;
+    box-shadow: 0px 5px 15px rgba(10, 48, 6, 0.4);
+    transform: translateY(-2px)
+}
+#cancelOrder {
+    background: #cb1919;
+    justify-self: center;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    border: 2px solid transparent;
+    padding: 10px 20px;
+    font-size: 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-weight:normal;
+    transition: all 0.3s ease-in-out;
+    margin: 20px auto; /* Centers the button */
+    display: block; /* Ensures it stays in its own row */
+    width: 400px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.15);
+}
+#cancelOrder:hover {
+    background: white;
+    color: #cb1919;
+    border-color:#cb1919;
+    box-shadow: 0px 5px 15px rgba(255, 51, 0, 0.4);
+    transform: translateY(-2px);
+}
+
+
+/* Payment Options Container */
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Ensures space between each option */
+    width: auto;
+    margin: auto;
+}
+
+/* Individual Payment Option */
+.payment-option {
+    display: flex;
+    align-items: center;
+    padding: 10px 1px;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    background: #f9f9f9;
+    width: auto;
+    font-size: 16px;
+    font-weight: 500;
+    gap: 12px; /* Space between logo and text */
+    margin-bottom: 20px; /* Adds separation between payment options */
+}
+/* Hover & Selected State */
+.payment-option:hover,
+.payment-option.selected {
+    border-color: #007bff;
+    background: #eef5ff;
+}
+
+/* Hide Default Radio Button */
+.payment-option input {
+    display: none;
+}
+
+/* Payment Logo Styling */
+.payment-logo {
+    width: 30px;
+    height: auto;
+}
+/* Adjust layout for smaller screens */
+@media screen and (max-width: 768px) {
+    .checkout-container {
+        flex-direction: column; /* Stacks sections vertically */
+        align-items: center;
+        gap: 10px;
+        padding: 10px;
+        max-width: 80vw;
+    }
+
+    .checkout-form {
+        width: 90%; /* Adjust width for smaller screens */
+        padding: 35px;
+        box-shadow: none; /* Simplify styling */
+    }
+
+    #saveAddress {
+        width: 90%; /* Fit button to smaller width */
+        font-size: 14px; /* Adjust text size */
+    }
+
+    #saved-addresses {
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+
+    .saved-address {
+        font-size: 12px; /* Smaller font for mobile screens */
+        padding: 8px;
+        margin-bottom: 8px;
+    }
+
+    .order-summary {
+        max-width: 80vw; /* Adjust width to fit screen */
+        padding: 15px;
+        box-shadow: none; /* Simplify styling */
+        order: -1; /* Place the order summary at the top */
+    }
+
+    .product-image {
+        width: 50px; /* Smaller image size */
+        height: 50px;
+    }
+
+    .product-name, .product-quantity, .product-price {
+        font-size: 1em; /* Reduce text size for smaller screens */
+    }
+
+    #proceedToPayment, #cancelOrder {
+        width: 90%; /* Buttons fit smaller screens */
+        font-size: 14px; /* Adjust text size */
+        padding: 8px 12px; /* Adjust padding */
+    }
+
+    .payment-options {
+        gap: 20px; /* Reduce spacing between payment options */
+    }
+
+    .payment-option {
+        font-size: 14px; /* Adjust font size */
+        gap: 8px; /* Reduce space between logo and text */
+        padding: 8px; /* Adjust padding */
+    }
+
+    .payment-logo {
+        width: 25px; /* Smaller logo size */
+    }
+}
+
+/* Tablet Screens */
+@media screen and (min-width: 769px) and (max-width: 1024px) {
+    .checkout-container {
+        flex-direction: row; /* Keep sections side-by-side */
+        align-items: flex-start;
+        gap: 15px;
+        padding: 05px;
+        max-width: 95vw;
+    }
+
+    .checkout-form {
+        width: 50vw; /* Adjust width */
+        padding: 25px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+    }
+
+    .order-summary {
+        width: 35vw; /* Adjust summary width */
+        padding: 20px;
+        box-shadow: 0 0 8px rgba(0, 0, 0, 0.1); /* Light shadow */
+    }
+
+    .product-image {
+        width: 60px; /* Slightly larger image size */
+        height: 60px;
+    }
+
+    .product-name, .product-quantity, .product-price {
+        font-size: 1.2em; /* Adjust text size for tablets */
+    }
+
+    #proceedToPayment, #cancelOrder {
+        width: 80%; /* Buttons fit tablet screens */
+        font-size: 16px; /* Adjust text size */
+        padding: 10px 15px; /* Adjust padding */
+    }
+
+    .payment-options {
+        gap: 30px; /* Moderate spacing between payment options */
+    }
+
+    .payment-option {
+        font-size: 16px; /* Adjust font size */
+        gap: 10px; /* Space between logo and text */
+        padding: 10px; /* Moderate padding */
+        margin-left: 0%;
+    }
+
+    .payment-logo {
+        width: 30px; /* Adjust logo size */
+    }
+}
+.coupon-section {
+  margin: 30px 0;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  max-width: 500px;
+  font-family: 'Poppins', sans-serif;
+}
+
+.coupon-section label {
+  font-weight: 600;
+  display: block;
+  margin-bottom: 10px;
+  font-size: 1rem;
+}
+
+.coupon-input-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+#couponInput {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+#applyCouponBtn {
+  background-color: #A91101;
+  color: #fff;
+  border: transparent 2px solid;
+  padding: 10px 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: ease-in-out 0.3s;
+}
+
+#applyCouponBtn:hover {
+  background-color: white;
+  color: #A91101;
+  border: #A91101 solid 2px;
+  
+}
+
+#couponMessage {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: #007b00;
+}
