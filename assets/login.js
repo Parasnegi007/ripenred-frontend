@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            const response = await fetch("https://pureplucks.com/api/users/login", {
+            const response = await fetch("https://ripenred.com/api/users/login", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: identifier, phone: identifier, password })
@@ -111,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
         sendOtpBtn.textContent = "Sending...";
 
         try {
-            const response = await fetch("https://pureplucks.com/api/users/forgot-password", {
+            const response = await fetch("https://ripenred.com/api/users/forgot-password", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: userIdentifier })
@@ -148,7 +148,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            const response = await fetch("https://pureplucks.com/api/users/verify-otp", {
+            const response = await fetch("https://ripenred.com/api/users/verify-otp", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: userIdentifier, otp: otpValue })
@@ -193,7 +193,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         try {
-            const response = await fetch("https://pureplucks.com/api/users/reset-password", {
+            const response = await fetch("https://ripenred.com/api/users/reset-password", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ email: userIdentifier, otp: otpValue, newPassword })
@@ -222,7 +222,7 @@ async function syncGuestData() {
     const guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
     if (guestCart.length > 0) {
         for (const item of guestCart) {
-            await fetch("https://pureplucks.com/api/cart", {
+            await fetch("https://ripenred.com/api/cart", {
                 method: "POST",
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
                 body: JSON.stringify(item)
@@ -235,7 +235,7 @@ async function syncGuestData() {
     const guestWishlist = JSON.parse(localStorage.getItem("guestWishlist")) || [];
     if (guestWishlist.length > 0) {
         for (const productId of guestWishlist) {
-            await fetch("https://pureplucks.com/api/wishlist", {
+            await fetch("https://ripenred.com/api/wishlist", {
                 method: "POST",
                 headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
                 body: JSON.stringify({ productId })
@@ -250,7 +250,7 @@ async function loginUser() {
     const password = document.getElementById("password").value;
 
     try {
-        const response = await fetch("https://pureplucks.com/api/users/login", {
+        const response = await fetch("https://ripenred.com/api/users/login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ email, password })

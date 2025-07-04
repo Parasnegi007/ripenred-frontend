@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     async function loadCategories() {
         try {
-            const response = await fetch("https://pureplucks.com/api/categories");
+            const response = await fetch("https://ripenred.com/api/categories");
             if (!response.ok) throw new Error("Failed to fetch categories");
     
             const categories = await response.json();
@@ -77,7 +77,7 @@ async function addToCart(productId, redirectToCheckout = false) {
 
     // Logged-in userin backend
     try {
-        const response = await fetch( "https://pureplucks.com/api/users/cart", {
+        const response = await fetch( "https://ripenred.com/api/users/cart", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -118,7 +118,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     for (const product of viewedProducts) {
         try {
-            const res = await fetch(`https://pureplucks.com/api/products/${product.productId}`);
+            const res = await fetch(`https://ripenred.com/api/products/${product.productId}`);
             if (!res.ok) {
                 console.warn(`⛔ Skipping deleted product ID: ${product.productId}`);
                 continue; // Product not found (likely deleted)
@@ -188,7 +188,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 document.addEventListener("DOMContentLoaded", async function () {
     try {
-        const response = await fetch("https://pureplucks.com/api/products/featured");
+        const response = await fetch("https://ripenred.com/api/products/featured");
         const featuredProducts = await response.json();
 
         if (featuredProducts.length > 0) {

@@ -13,7 +13,7 @@ document.getElementById('trackBtn').addEventListener('click', async () => {
     }
 
     try {
-        const response = await fetch('https://pureplucks.com/api/orders/track-order', {
+        const response = await fetch('https://ripenred.com/api/orders/track-order', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, phone })

@@ -10,7 +10,7 @@ async function loadCart() {
 
     if (token) {
         try {
-            const response = await fetch("https://pureplucks.com/api/users/cart", {
+            const response = await fetch("https://ripenred.com/api/users/cart", {
                 headers: { Authorization: `Bearer ${token}` }
             });
             const result = await response.json();
@@ -28,7 +28,7 @@ async function loadCart() {
     const enrichedCart = await Promise.all(
         cart.map(async item => {
             try {
-                const res = await fetch(`https://pureplucks.com/api/products/${item.productId}`);
+                const res = await fetch(`https://ripenred.com/api/products/${item.productId}`);
                 if (!res.ok) return { ...item, deleted: true };
                 const product = await res.json();
                 return {
@@ -152,7 +152,7 @@ async function updateCartQuantity(productId, newQuantity) {
 
     // Check product stock first
     try {
-        const productRes = await fetch(`https://pureplucks.com/api/products/${productId}`);
+        const productRes = await fetch(`https://ripenred.com/api/products/${productId}`);
         const product = await productRes.json();
 
         if (product.stock === 0) {
@@ -161,7 +161,7 @@ async function updateCartQuantity(productId, newQuantity) {
         }
 
         if (token) {
-            await fetch(`https://pureplucks.com/api/users/cart/${productId}`, {
+            await fetch(`https://ripenred.com/api/users/cart/${productId}`, {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -197,7 +197,7 @@ async function removeFromCart(productId) {
         const token = localStorage.getItem("authToken");
         if (token) {
             try {
-                await fetch(`https://pureplucks.com/api/users/cart/${productId}`, {
+                await fetch(`https://ripenred.com/api/users/cart/${productId}`, {
                     method: "DELETE",
                     headers: { Authorization: `Bearer ${token}` }
                 });
@@ -249,7 +249,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
     for (const product of viewedProducts) {
         try {
-            const res = await fetch(`https://pureplucks.com/api/products/${product.productId}`);
+            const res = await fetch(`https://ripenred.com/api/products/${product.productId}`);
             if (!res.ok) {
                 console.warn(`⛔ Skipping deleted product ID: ${product.productId}`);
                 continue;
@@ -338,7 +338,7 @@ async function addToCart(productId, quantity = 1, redirectToCheckout = false) {
 }
 
     try {
-        const response = await fetch("https://pureplucks.com/api/users/cart", {
+        const response = await fetch("https://ripenred.com/api/users/cart", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -408,7 +408,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         if (token) {
             try {
-                const response = await fetch("https://pureplucks.com/api/users/cart", {
+                const response = await fetch("https://ripenred.com/api/users/cart", {
                     headers: { Authorization: `Bearer ${token}` },
                 });
                 userCart = await response.json();

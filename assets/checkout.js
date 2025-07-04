@@ -10,7 +10,7 @@ async function fetchCartItems() {
 
         if (token) {
             // Logged-in user: Fetch raw cart from backend
-            const response = await fetch("https://pureplucks.com/api/users/cart", {
+            const response = await fetch("https://ripenred.com/api/users/cart", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -28,7 +28,7 @@ async function fetchCartItems() {
             cartItems = await Promise.all(
                 rawCart.map(async (item) => {
                     try {
-                        const res = await fetch(`https://pureplucks.com/api/products/${item.productId}`);
+                        const res = await fetch(`https://ripenred.com/api/products/${item.productId}`);
                         if (!res.ok) return { ...item, deleted: true };
 
                         const product = await res.json();
@@ -54,7 +54,7 @@ async function fetchCartItems() {
             let guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
 
             if (guestCart.length > 0) {
-                const response = await fetch("https://pureplucks.com/api/products");
+                const response = await fetch("https://ripenred.com/api/products");
                 const products = await response.json();
 
                 // Map full product details into guest cart
@@ -191,7 +191,7 @@ applyCouponBtn.addEventListener("click", async () => {
     }
 
     try {
-        const response = await fetch("https://pureplucks.com/api/users/apply-coupon", {
+        const response = await fetch("https://ripenred.com/api/users/apply-coupon", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -249,7 +249,7 @@ async function fetchUserDetails() {
         const token = localStorage.getItem("authToken");
         if (!token) return; // Skip for guest users
 
-        const response = await fetch("https://pureplucks.com/api/users/profile", {
+        const response = await fetch("https://ripenred.com/api/users/profile", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -312,7 +312,7 @@ async function saveAddress() {
 
     if (token) {
         // ✅ Logged-in User - Send Address Only
-        endpoint = "https://pureplucks.com/api/users/addAddress";
+        endpoint = "https://ripenred.com/api/users/addAddress";
     } else {
         // ✅ Guest User - Send Name, Email, and Phone Too
         const name = document.getElementById("name")?.value.trim();
@@ -325,7 +325,7 @@ async function saveAddress() {
         }
 
         addressData = { name, email, phone, ...addressData };
-        endpoint = "https://pureplucks.com/api/users/guest/addAddress";
+        endpoint = "https://ripenred.com/api/users/guest/addAddress";
     }
 
     console.log("Sending address data:", addressData);
@@ -366,14 +366,14 @@ async function fetchSavedAddresses() {
     let endpoint = "";
 
     if (token) {
-        endpoint = "https://pureplucks.com/api/users/getAddresses";
+        endpoint = "https://ripenred.com/api/users/getAddresses";
     } else {
         const guestEmail = document.getElementById("email")?.value.trim();
         if (!guestEmail) {
             console.log("Guest email not entered yet.");
             return;
         }
-        endpoint = `https://pureplucks.com/api/users/guest/getAddresses/${guestEmail}`;
+        endpoint = `https://ripenred.com/api/users/guest/getAddresses/${guestEmail}`;
     }
 
     try {
@@ -523,14 +523,14 @@ document.getElementById("proceedToPayment").addEventListener("click", async func
             let endpoint = "";
 
             if (token) {
-                endpoint = "https://pureplucks.com/api/users/getAddresses";
+                endpoint = "https://ripenred.com/api/users/getAddresses";
             } else {
                 const guestEmail = document.getElementById("email")?.value.trim();
                 if (!guestEmail) {
                     alert("Please enter your email to retrieve saved addresses.");
                     return;
                 }
-                endpoint = `https://pureplucks.com/api/users/guest/getAddresses/${guestEmail}`;
+                endpoint = `https://ripenred.com/api/users/guest/getAddresses/${guestEmail}`;
             }
 
             const response = await fetch(endpoint, {
@@ -620,7 +620,7 @@ document.getElementById("proceedToPayment").addEventListener("click", async func
     let cartItems = [];
     if (token) {
     try {
-        const response = await fetch("https://pureplucks.com/api/users/cart", {
+        const response = await fetch("https://ripenred.com/api/users/cart", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -643,7 +643,7 @@ document.getElementById("proceedToPayment").addEventListener("click", async func
     try {
         let guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
 
-        const response = await fetch("https://pureplucks.com/api/products");
+        const response = await fetch("https://ripenred.com/api/products");
         if (!response.ok) throw new Error("Failed to fetch product data.");
 
         const products = await response.json();
@@ -748,7 +748,7 @@ console.log("Final Order Payload:", JSON.stringify(orderData, null, 2));
 
     // ✅ Step 7: Send Order Data to Backend
     try {
-        const response = await fetch("https://pureplucks.com/api/orders/create-order", {
+        const response = await fetch("https://ripenred.com/api/orders/create-order", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -775,7 +775,7 @@ if (paymentMethod === "razorpay") {
 
         handler: async function (response) {
             try {
-                const confirmRes = await fetch("https://pureplucks.com/api/orders/confirm-payment", {
+                const confirmRes = await fetch("https://ripenred.com/api/orders/confirm-payment", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
