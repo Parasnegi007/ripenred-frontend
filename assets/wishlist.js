@@ -6,7 +6,7 @@ async function fetchWishlist() {
     }
 
     try {
-        const response = await fetch("https://ripenred.com/api/users/wishlist", {
+        const response = await fetch("https://ripenred-backend.onrender.com/api/users/wishlist", {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` }
         });
@@ -22,7 +22,7 @@ async function loadWishlist() {
     let wishlist = [];
 
     if (token) {
-        const response = await fetch("https://ripenred.com/api/users/wishlist", { headers: { Authorization: `Bearer ${token}` } });
+        const response = await fetch("https://ripenred-backend.onrender.com/api/users/wishlist", { headers: { Authorization: `Bearer ${token}` } });
         wishlist = await response.json();
     } else {
         // ✅ Ensure guestWishlist is always defined
@@ -30,7 +30,7 @@ async function loadWishlist() {
         console.log("🔍 Guest Wishlist Product IDs:", guestWishlist);
 
         wishlist = await Promise.all(guestWishlist.map(async (productId) => {
-            const res = await fetch(`https://ripenred.com/api/products/${productId}`);
+            const res = await fetch(`https://ripenred-backend.onrender.com/api/products/${productId}`);
             return res.json();
         }));
 
@@ -149,7 +149,7 @@ async function addToCart(productId, redirectToCheckout = false) {
 
     // Logged-in user - store in backend
     try {
-        const response = await fetch( "https://ripenred.com/api/users/cart", {
+        const response = await fetch( "https://ripenred-backend.onrender.com/api/users/cart", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -181,7 +181,7 @@ async function removeFromWishlist(productId) {
 
     if (token) {
         try {
-            const response = await fetch(`https://ripenred.com/api/users/wishlist/${productId}`, {
+            const response = await fetch(`https://ripenred-backend.onrender.com/api/users/wishlist/${productId}`, {
                 method: "DELETE",
                 headers: { Authorization: `Bearer ${token}` }
             });

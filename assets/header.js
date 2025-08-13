@@ -42,7 +42,7 @@ searchButton1.addEventListener('click', async () => {
     if (!query) return;
 
     try {
-        const response = await fetch(`https://ripenred.com/api/products/search?query=${query}`);
+        const response = await fetch(`https://ripenred-backend.onrender.com/api/products/search?query=${query}`);
         const products = await response.json();
 
         searchResultsContainer1.innerHTML = ''; // Clear previous results
@@ -92,7 +92,7 @@ document.addEventListener("click", (event) => {
             if (!query) return;
     
             try {
-                const response = await fetch(`https://ripenred.com/api/products/search?query=${query}`);
+                const response = await fetch(`https://ripenred-backend.onrender.com/api/products/search?query=${query}`);
                 const products = await response.json();
     
                 searchResultsContainer.innerHTML = ''; // Clear previous results
@@ -259,7 +259,7 @@ function updateCartCount() {
     const token = localStorage.getItem("authToken");
 
     if (token) {
-        fetch("https://ripenred.com/api/users/cart", {
+        fetch("https://ripenred-backend.onrender.com/api/users/cart", {
             method: "GET",
             headers: { Authorization: `Bearer ${token}` }
         })

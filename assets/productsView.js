@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     try {
-        const response = await fetch(`https://ripenred.com/api/products/${productId}`);
+        const response = await fetch(`https://ripenred-backend.onrender.com/api/products/${productId}`);
         if (!response.ok) throw new Error("Failed to fetch product details");
 
         product = await response.json(); // ✅ Assign product globally
@@ -112,7 +112,7 @@ function updateProductQuantity(change) {
 
     for (const product of viewedProducts) {
         try {
-            const res = await fetch(`https://ripenred.com/api/products/${product.productId}`);
+            const res = await fetch(`https://ripenred-backend.onrender.com/api/products/${product.productId}`);
             if (!res.ok) {
                 console.warn(`⛔ Skipping deleted product ID: ${product.productId}`);
                 continue; // Product not found (likely deleted)
@@ -223,7 +223,7 @@ async function addToCart(productId, quantity, redirectToCheckout = false) {
     }
 
     try {
-        const response = await fetch("https://ripenred.com/api/users/cart", {
+        const response = await fetch("https://ripenred-backend.onrender.com/api/users/cart", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -259,7 +259,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   if (!couponText || !revealLink || !token) return;
 
   try {
-    const response = await fetch("https://ripenred.com/api/users/me", {
+    const response = await fetch("https://ripenred-backend.onrender.com/api/users/me", {
       headers: { Authorization: `Bearer ${token}` },
     });
 
@@ -276,3 +276,37 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Optional: handle silently
   }
 });
+
+  const delhiPincodes = [
+    "110001", "110002", "110003", "110004", "110005", "110006", "110007", "110008", "110009",
+    "110010", "110011", "110012", "110013", "110014", "110015", "110016", "110017", "110018",
+    "110019", "110020", "110021", "110022", "110023", "110024", "110025", "110026", "110027",
+    "110028", "110029", "110030", "110031", "110032", "110033", "110034", "110035", "110036",
+    "110037", "110038", "110039", "110040", "110041", "110042", "110043", "110044", "110045",
+    "110046", "110047", "110048", "110049", "110050", "110051", "110052", "110053", "110054",
+    "110055", "110056", "110057", "110058", "110059", "110060", "110061", "110062", "110063",
+    "110064", "110065", "110066", "110067", "110068", "110069", "110070", "110071", "110072",
+    "110073", "110074", "110075", "110076", "110077", "110078", "110080", "110081", "110082",
+    "110083", "110084", "110085", "110086", "110087", "110088", "110089", "110090", "110091",
+    "110092", "110093", "110094", "110095", "110096"
+  ];
+
+  function checkAvailability() {
+    const pincode = document.getElementById("pincode").value.trim();
+    const result = document.getElementById("availability-result");
+
+    if (!pincode) {
+      result.textContent = "Please enter your area PIN code to check delivery availability.";
+      result.style.color = "red";
+      return;
+    }
+
+    if (delhiPincodes.includes(pincode)) {
+      result.textContent = "🎉 Great news! We deliver our fresh produce to your location.";
+      result.style.color = "green";
+    } else {
+      result.textContent = "🚫 Sorry, we currently don’t deliver to this PIN code. Try a different one.";
+      result.style.color = "red";
+    }
+  }
+

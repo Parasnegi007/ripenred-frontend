@@ -8,7 +8,7 @@ window.addEventListener("DOMContentLoaded", async function () {
     }
 
     try {
-        const response = await fetch("https://ripenred.com/api/users/profile", {
+        const response = await fetch("https://ripenred-backend.onrender.com/api/users/profile", {
             method: "GET",
             headers: { "Authorization": `Bearer ${token}` }
         });
@@ -121,7 +121,7 @@ window.addEventListener("DOMContentLoaded", async function () {
         try {
             const token = localStorage.getItem("authToken");  // Get stored JWT token
 
-            const response = await fetch("https://ripenred.com/api/users/send-otp-update", {
+            const response = await fetch("https://ripenred-backend.onrender.com/api/users/send-otp-update", {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json",
@@ -180,7 +180,7 @@ window.addEventListener("DOMContentLoaded", async function () {
         }
 
         try {
-            const response = await fetch("https://ripenred.com/api/users/update-profile", {
+            const response = await fetch("https://ripenred-backend.onrender.com/api/users/update-profile", {
                 method: "PUT",
                 headers: {
                     "Content-Type": "application/json",
@@ -208,7 +208,7 @@ window.addEventListener("DOMContentLoaded", async function () {
 // Function to fetch user addresses from the backend
 async function fetchAddresses() {
     const token = localStorage.getItem("authToken");
-    const endpoint = "https://ripenred.com/api/users/getAddresses";
+    const endpoint = "https://ripenred-backend.onrender.com/api/users/getAddresses";
     console.log("Starting fetch request to:", endpoint);
 
     if (!token) {
@@ -293,7 +293,7 @@ async function deleteAddress(addressId) {
     }
 
     try {
-        const response = await fetch(`https://ripenred.com/api/users/deleteAddress/${addressId}`, {
+        const response = await fetch(`https://ripenred-backend.onrender.com/api/users/deleteAddress/${addressId}`, {
             method: "DELETE",
             headers: {
                 "Authorization": `Bearer ${token}`
@@ -327,7 +327,7 @@ let allOrders = [];
 let currentDisplayIndex = 0; // Tracks how many orders are displayed
 async function fetchOrders() {
     const token = localStorage.getItem("authToken");
-    const endpoint = `https://ripenred.com/api/orders/my-orders`;
+    const endpoint = `https://ripenred-backend.onrender.com/api/orders/my-orders`;
 
     if (!token) {
         console.error("Token not found in localStorage.");

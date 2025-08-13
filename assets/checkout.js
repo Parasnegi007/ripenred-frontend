@@ -10,7 +10,7 @@ async function fetchCartItems() {
 
         if (token) {
             // Logged-in user: Fetch raw cart from backend
-            const response = await fetch("https://ripenred.com/api/users/cart", {
+            const response = await fetch("https://ripenred-backend.onrender.com/api/users/cart", {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
@@ -28,7 +28,7 @@ async function fetchCartItems() {
             cartItems = await Promise.all(
                 rawCart.map(async (item) => {
                     try {
-                        const res = await fetch(`https://ripenred.com/api/products/${item.productId}`);
+                        const res = await fetch(`https://ripenred-backend.onrender.com/api/products/${item.productId}`);
                         if (!res.ok) return { ...item, deleted: true };
 
                         const product = await res.json();
@@ -54,7 +54,7 @@ async function fetchCartItems() {
             let guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
 
             if (guestCart.length > 0) {
-                const response = await fetch("https://ripenred.com/api/products");
+                const response = await fetch("https://ripenred-backend.onrender.com/api/products");
                 const products = await response.json();
 
                 // Map full product details into guest cart
@@ -191,7 +191,7 @@ applyCouponBtn.addEventListener("click", async () => {
     }
 
     try {
-        const response = await fetch("https://ripenred.com/api/users/apply-coupon", {
+        const response = await fetch("https://ripenred-backend.onrender.com/api/users/apply-coupon", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -249,7 +249,7 @@ async function fetchUserDetails() {
         const token = localStorage.getItem("authToken");
         if (!token) return; // Skip for guest users
 
-        const response = await fetch("https://ripenred.com/api/users/profile", {
+        const response = await fetch("https://ripenred-backend.onrender.com/api/users/profile", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -293,13 +293,82 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("phone").removeAttribute("disabled");
     }
 });
+
+
+// ✅ Delhi-only PIN code list
+const delhiPincodes = [
+  "110001", "110002", "110003", "110004", "110005", "110006", "110007", "110008", "110009",
+  "110010", "110011", "110012", "110013", "110014", "110015", "110016", "110017", "110018",
+  "110019", "110020", "110021", "110022", "110023", "110024", "110025", "110026", "110027",
+  "110028", "110029", "110030", "110031", "110032", "110033", "110034", "110035", "110036",
+  "110037", "110038", "110039", "110040", "110041", "110042", "110043", "110044", "110045",
+  "110046", "110047", "110048", "110049", "110050", "110051", "110052", "110053", "110054",
+  "110055", "110056", "110057", "110058", "110059", "110060", "110061", "110062", "110063",
+  "110064", "110065", "110066", "110067", "110068", "110069", "110070", "110071", "110072",
+  "110073", "110074", "110075", "110076", "110077", "110078", "110080", "110081", "110082",
+  "110083", "110084", "110085", "110086", "110087", "110088", "110089", "110090", "110091",
+  "110092", "110093", "110094", "110095", "110096"
+];
+
+// ✅ Validate pincode and control buttons
+function validatePincodeDelivery() {
+  const pincode = document.getElementById("zipcode")?.value.trim();
+  const proceedBtn = document.getElementById("proceedToPayment");
+  const saveBtn = document.getElementById("saveAddress");
+
+  // Message display setup
+ let warningMsg = document.getElementById("pincode-warning");
+if (!warningMsg) {
+  warningMsg = document.createElement("p");
+  warningMsg.id = "pincode-warning";
+  warningMsg.style.color = "red";
+  warningMsg.style.marginTop = "6px";
+  warningMsg.style.fontSize = "16px";
+warningMsg.style.textAlign = "center";
+  // ✅ Append the warning message just below the Save Address button
+  saveBtn.insertAdjacentElement("afterend", warningMsg);
+}
+
+
+  if (!pincode) {
+    proceedBtn.disabled = false;
+    saveBtn.disabled = false;
+    warningMsg.textContent = "";
+    return;
+  }
+
+  if (!delhiPincodes.includes(pincode)) {
+    alert("Sorry, we currently deliver only in Delhi.");
+    proceedBtn.disabled = true;
+    saveBtn.disabled = true;
+    warningMsg.textContent = "We do not currently serve this location.";
+  } else {
+    proceedBtn.disabled = false;
+    saveBtn.disabled = false;
+    warningMsg.textContent = "";
+  }
+}
+
+// ✅ Attach blur event to pincode input
+document.getElementById("zipcode").addEventListener("blur", validatePincodeDelivery);
+
+
+
+
+
 async function saveAddress() {
     const token = localStorage.getItem("authToken"); // Check if user is logged in
+
+    const zipcode = document.getElementById("zipcode")?.value.trim();
+    if (zipcode && !delhiPincodes.includes(zipcode)) {
+        alert("Sorry, we currently deliver only in Delhi.");
+        return;
+    }
+
 
     const street = document.getElementById("street")?.value.trim();
     const city = document.getElementById("city")?.value.trim();
     const state = document.getElementById("state")?.value.trim();
-    const zipcode = document.getElementById("zipcode")?.value.trim();
     const country = document.getElementById("country")?.value.trim();
 
     if (!street || !city || !state || !zipcode || !country) {
@@ -312,7 +381,7 @@ async function saveAddress() {
 
     if (token) {
         // ✅ Logged-in User - Send Address Only
-        endpoint = "https://ripenred.com/api/users/addAddress";
+        endpoint = "https://ripenred-backend.onrender.com/api/users/addAddress";
     } else {
         // ✅ Guest User - Send Name, Email, and Phone Too
         const name = document.getElementById("name")?.value.trim();
@@ -325,7 +394,7 @@ async function saveAddress() {
         }
 
         addressData = { name, email, phone, ...addressData };
-        endpoint = "https://ripenred.com/api/users/guest/addAddress";
+        endpoint = "https://ripenred-backend.onrender.com/api/users/guest/addAddress";
     }
 
     console.log("Sending address data:", addressData);
@@ -366,14 +435,14 @@ async function fetchSavedAddresses() {
     let endpoint = "";
 
     if (token) {
-        endpoint = "https://ripenred.com/api/users/getAddresses";
+        endpoint = "https://ripenred-backend.onrender.com/api/users/getAddresses";
     } else {
         const guestEmail = document.getElementById("email")?.value.trim();
         if (!guestEmail) {
             console.log("Guest email not entered yet.");
             return;
         }
-        endpoint = `https://ripenred.com/api/users/guest/getAddresses/${guestEmail}`;
+        endpoint = `https://ripenred-backend.onrender.com/api/users/guest/getAddresses/${guestEmail}`;
     }
 
     try {
@@ -511,7 +580,6 @@ function populateStatesAndUT() {
 }
 
 
-
 document.getElementById("proceedToPayment").addEventListener("click", async function () {
     // ✅ Step 1: Capture Selected Saved Address
     const selectedAddressIndex = document.querySelector('input[name="selectedAddress"]:checked')?.value;
@@ -523,14 +591,14 @@ document.getElementById("proceedToPayment").addEventListener("click", async func
             let endpoint = "";
 
             if (token) {
-                endpoint = "https://ripenred.com/api/users/getAddresses";
+                endpoint = "https://ripenred-backend.onrender.com/api/users/getAddresses";
             } else {
                 const guestEmail = document.getElementById("email")?.value.trim();
                 if (!guestEmail) {
                     alert("Please enter your email to retrieve saved addresses.");
                     return;
                 }
-                endpoint = `https://ripenred.com/api/users/guest/getAddresses/${guestEmail}`;
+                endpoint = `https://ripenred-backend.onrender.com/api/users/guest/getAddresses/${guestEmail}`;
             }
 
             const response = await fetch(endpoint, {
@@ -620,7 +688,7 @@ document.getElementById("proceedToPayment").addEventListener("click", async func
     let cartItems = [];
     if (token) {
     try {
-        const response = await fetch("https://ripenred.com/api/users/cart", {
+        const response = await fetch("https://ripenred-backend.onrender.com/api/users/cart", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -643,7 +711,7 @@ document.getElementById("proceedToPayment").addEventListener("click", async func
     try {
         let guestCart = JSON.parse(localStorage.getItem("guestCart")) || [];
 
-        const response = await fetch("https://ripenred.com/api/products");
+        const response = await fetch("https://ripenred-backend.onrender.com/api/products");
         if (!response.ok) throw new Error("Failed to fetch product data.");
 
         const products = await response.json();
@@ -748,7 +816,7 @@ console.log("Final Order Payload:", JSON.stringify(orderData, null, 2));
 
     // ✅ Step 7: Send Order Data to Backend
     try {
-        const response = await fetch("https://ripenred.com/api/orders/create-order", {
+        const response = await fetch("https://ripenred-backend.onrender.com/api/orders/create-order", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -775,7 +843,7 @@ if (paymentMethod === "razorpay") {
 
         handler: async function (response) {
             try {
-                const confirmRes = await fetch("https://ripenred.com/api/orders/confirm-payment", {
+                const confirmRes = await fetch("https://ripenred-backend.onrender.com/api/orders/confirm-payment", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
@@ -863,6 +931,7 @@ document.addEventListener("click", (event) => {
 });
 // ✅ Function to Handle Payment Method Selection and Highlight
 document.addEventListener("DOMContentLoaded", () => {
+    
     const paymentOptions = document.querySelectorAll(".payment-option");
 
     // Loop through all payment options

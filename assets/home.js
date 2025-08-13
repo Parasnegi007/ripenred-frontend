@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
 function loadSaleProducts() {
-    fetch("https://ripenred.com/api/products/sale-products")
+    fetch("https://ripenred-backend.onrender.com/api/products/sale-products")
         .then(response => response.json())
         .then(products => {
             const saleProductsContainer = document.getElementById("sale-list");
@@ -89,7 +89,7 @@ async function addToCart(productId, redirectToCheckout = false) {
 
     // Logged-in userin backend
     try {
-        const response = await fetch( "https://ripenred.com/api/users/cart", {
+        const response = await fetch( "https://ripenred-backend.onrender.com/api/users/cart", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -308,7 +308,7 @@ async function checkLoginStatus() {
             return;
         }
 
-        const response = await fetch("https://ripenred.com/api/users/me", {
+        const response = await fetch("https://ripenred-backend.onrender.com/api/users/me", {
             headers: { "Authorization": `Bearer ${token}` }
         });
 
@@ -334,7 +334,7 @@ async function checkLoginStatus() {
 
 document.addEventListener("DOMContentLoaded", async function () {
     try {
-        const response = await fetch("https://ripenred.com/api/products/featured");
+        const response = await fetch("https://ripenred-backend.onrender.com/api/products/featured");
         const featuredProducts = await response.json();
 
         if (featuredProducts.length > 0) {

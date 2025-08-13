@@ -21,7 +21,7 @@ faqItems.forEach(item => {
     const token = localStorage.getItem("authToken");
     if (token) {
         try {
-            const response = await fetch("https://ripenred.com/api/users/me", {
+            const response = await fetch("https://ripenred-backend.onrender.com/api/users/me", {
                 method: "GET",
                 headers: { Authorization: `Bearer ${token}` },
             });
@@ -55,7 +55,7 @@ faqItems.forEach(item => {
         const messageBox = document.getElementById("formMessage");
 
         try {
-            const response = await fetch("https://ripenred.com/api/users/contact", {
+            const response = await fetch("https://ripenred-backend.onrender.com/api/users/contact", {
                 method: "POST",
                 headers: { 
                     "Content-Type": "application/json",
@@ -110,7 +110,7 @@ faqItems.forEach(item => {
             const messageBox = document.getElementById("queryMessage");
         
             try {
-                const response = await fetch("https://ripenred.com/api/users/send-query", {
+                const response = await fetch("https://ripenred-backend.onrender.com/api/users/send-query", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
