@@ -1,0 +1,368 @@
+/* Wishlist CSS Stylesheet */
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* ========== MODERN HIMALAYAN FRUITS SECTION ========== */
+#himalayan-fruits-section {
+    position: relative;
+    padding: 60px 0;
+    background: linear-gradient(300deg, #A91101 10%, #cb5710 90%);
+    overflow: hidden;
+    min-height: 450px;
+    box-shadow: 0 5px 36px rgba(169,17,1,0.15);
+}
+
+#himalayan-fruits-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/cover1 copy.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+#himalayan-fruits-section .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.1);
+    border-radius: 30px;
+    padding: 40px 50px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+#himalayan-fruits-section .slogan {
+    flex: 1;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-family: 'Secular One', sans-serif;
+    opacity: 0;
+    transform: translateX(-60px);
+    animation: fade-slide-in-left 1.2s 0.2s forwards;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+#himalayan-fruits-section .slogan p {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-top: 20px;
+    font-family: 'Poppins', sans-serif;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+}
+
+#himalayan-fruits-section .fruit-image {
+    flex: 1;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(60px);
+    animation: fade-slide-in-right 1.2s 0.4s forwards;
+}
+
+#himalayan-fruits-section .fruit-image img {
+    width: 70%;
+    max-width: 400px;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.3));
+    transition: transform 0.3s ease;
+}
+
+#himalayan-fruits-section .fruit-image img:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fade-slide-in-left {
+    from { opacity: 0; transform: translateX(-60px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-slide-in-right {
+    from { opacity: 0; transform: translateX(60px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+    #himalayan-fruits-section {
+        padding: 30px 15px;
+        min-height: 350px;
+    }
+
+    #himalayan-fruits-section .content {
+        flex-direction: column;
+        padding: 25px 20px;
+        gap: 25px;
+        border-radius: 20px;
+    }
+
+    #himalayan-fruits-section .slogan {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    #himalayan-fruits-section .slogan p {
+        font-size: 1.1rem;
+    }
+
+    #himalayan-fruits-section .fruit-image img {
+        width: 85%;
+    }
+}
+/* ========== Wishlist Section ========== */
+.wishlist-section {
+  text-align: center;
+  padding: 10px;
+  background: white;
+
+}
+
+.wishlist-section h2 {
+  font-size: 2rem;
+    color: var(--heading-primary);
+    font-family: 'Secular One', sans-serif;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+/* Wishlist Grid */
+.wishlist-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr); /* Default desktop */
+  gap: 20px;
+  padding: 0 10px;
+}
+
+/* Wishlist Items */
+.wishlist-item {
+flex: 0 0 auto;
+    width: 240px;
+    min-width: 185px;
+    background: rgba(255,255,255,0.9);
+    padding: 15px;
+    border-radius: 15px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+}
+
+.wishlist-item:hover {
+  transform:scale(1.01);
+    box-shadow: 0 8px 24px rgba(169,17,1,0.15);
+}
+
+.wishlist-item img {
+  width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.wishlist-item:hover img {
+  transform: scale(1.03);
+}
+
+.wishlist-item h3 {
+  font-size: 1.1rem;
+    font-weight: 600;
+    margin: 10px 0;
+    font-family: 'Secular One', sans-serif;
+}
+
+.wishlist-item .price {
+  font-size: 20px;
+  font-weight: bold;
+  color: #006837;
+}
+
+.wishlist-item .mrp {
+  text-decoration: line-through;
+  color: gray;
+  font-size: 18px;
+  margin-right: 10px;
+}
+
+/* Buttons Container */
+.wishlist-buttons {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+.wishlist-buttons button  {
+    background: linear-gradient(90deg, #a91101 60%, #e74c3c 100%);
+    color: #fff;
+    border: 2px solid #a91101;
+    font-family: 'Poppins', sans-serif;
+    padding: 8px 16px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    font-weight: 700;
+    letter-spacing: 0.1px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(169,17,1,0.2);
+}
+
+.wishlist-buttons button::after {
+    content: '';
+    position: absolute;
+    left: -60%; top: 0; width: 60%; height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+    transform: skewX(-20deg);
+    transition: left 0.5s cubic-bezier(.4,0,.2,1);
+    z-index: 0;
+}
+
+.wishlist-buttons button:hover::after {
+    left: 110%;
+}
+
+.wishlist-buttons button:hover {
+    background: #fff;
+    color: #a91101;
+    border: 2px solid #a91101;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(169,17,1,0.25);
+    transform: translateY(-2px);
+}
+
+
+/* ==================== RESPONSIVE ==================== */
+
+/* 👉 Tablet: 3 columns */
+@media (max-width: 1023px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .wishlist-item img {
+    height: 160px;
+  }
+
+  .wishlist-item h3 {
+    font-size: 20px;
+  }
+
+  .wishlist-item .price,
+  .wishlist-item .mrp {
+    font-size: 16px;
+  }
+
+  .wishlist-buttons button {
+    font-size: 13px;
+    padding: 5px 10px;
+  }
+}
+
+/* 👉 Mobile: 2 columns */
+@media (max-width: 767px) {
+  .wishlist-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .wishlist-container {
+    padding: 20px 10px;
+  }
+
+  .wishlist-container h2 {
+    font-size: 24px;
+  }
+
+  .wishlist-item {
+   flex: 0 0 auto; /* Prevent shrinking */
+    width: 150px;
+  }
+
+  .wishlist-item img {
+  width: 100%; /* Full width of the container */
+    height: 120px; /* Fixed height to maintain consistency */
+  }
+
+  .wishlist-item h3 {
+    font-size: 13px;
+  }
+
+  .wishlist-item .price,
+  .wishlist-item .mrp {
+    font-size: 14px;
+  }
+
+  .wishlist-buttons {
+    gap: 4px;
+  }
+
+  .wishlist-buttons button {
+    font-size: 12px;
+    padding: 4px 8px;
+  }
+}
+
+html, body {
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    overflow: hidden;
+    overflow-y: auto;
+    flex-direction: column;
+}
+
+/* Make the main content section expand to push footer down */
+.container {
+    flex: 1;
+}
+/* Slogan Section */
+#fruit-slogan-section {
+    background: #ffffff; /* White background */
+    text-align: center; /* Center-align text */
+    padding: 10px 20px; /* Add spacing for balanced visuals */
+    margin: 20px auto; /* Center the section horizontally */
+  max-width: 90vw;
+  border-top: solid 1px #cb1919;
+}
+
+#fruit-slogan-section h1 {
+  
+    font-size: 1.8rem; /* Default font size for desktops */
+    font-weight: normal; /* Normal font weight */
+    line-height: 1.5; /* Improved readability */
+    text-transform: capitalize; /* Elegant capitalization */
+}
+
+#fruit-slogan-section strong {
+    font-weight: bold; /* Bold styling for emphasis */
+    color:  #006837; /* Optional black color for key words */
+}
+
+/* Responsive Styling */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #fruit-slogan-section h1 {
+        font-size: 1.6rem; /* Slightly smaller font for tablets */
+        padding: 10px 15px; /* Adjust padding for smaller screens */
+    }
+}
+
+@media (max-width: 768px) { /* Mobile */
+    #fruit-slogan-section h1 {
+        font-size: 24px; /* Reduced font size for mobile */
+        padding: 10px 10px; /* Compact padding for smaller screens */
+    }
+}

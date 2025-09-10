@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signup – Ripe'n Red | Create Your Account</title>
+  <meta name="description" content="Create your Ripe'n Red account to shop fresh Himalayan fruits online. Get exclusive offers, personalized recommendations, and secure checkout access." />
+  <meta name="keywords" content="signup, create account, register, Ripe'n Red, farm fresh fruits, Himalayan apples, organic produce" />
+  <meta name="robots" content="index, follow" />
+<meta name="author" content="Ripe'n Red" />
+<link rel="canonical" href="https://ripenred.com/signup.html" />
+  <meta property="og:title" content="Signup | Ripe'n Red" />
+  <meta property="og:description" content="Join Ripe'n Red to access farm-fresh fruits and personalized deals. Secure, easy signup process." />
+  <meta property="og:image" content="https://ripenred.com/assets/images/logo1.webp" />
+<meta property="og:url" content="https://ripenred.com/signup.html" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <!-- Font Awesome CDN for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="assets/signup.css" />
+</head>
+
+<body>
+
+<section class="text-carousel">
+  <div class="carousel-text">
+    <div class="announcement">"Cultivating Brilliance in Khadrala’s Verdant Heights"</div>
+    <div class="announcement">Get 20% off on your first purchase! <strong>Limited time only!</strong></div>
+    <div class="announcement">Exclusive fresh arrivals this season!</div>
+    <div class="announcement">Shop sustainably—handpicked quality guaranteed!</div>
+  </div>
+</section>
+<section class="header-top">  <!--dashboard on left-->
+
+    <div class="top-logo">
+                <a href="index.html"><img src="assets/images/logo1.webp" alt="logo"></a>
+            
+            </div>
+<header> 
+    <!-- Centered Logo -->
+    <div class="logo">
+        <h1>Signup</h1>
+    </div></header>
+    <!-- Signup Form -->
+    <section class="signup-container">
+        <h2>Create Your Account</h2>
+        <form id="signup-form">
+            <div class="input-group">
+                <i class="fas fa-user"></i>
+                <input type="text" id="name" placeholder="Enter your name" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-phone"></i>
+                <input type="tel" id="phone" placeholder="Enter your phone number" required>
+            </div>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Create a password" required>
+            </div>
+            <input type="checkbox" id="show-password"> Show Password
+            <p id="password-match-message" style="margin-top: 5px; font-size: 14px;"></p>
+
+            <div class="input-group">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="confirm-password" placeholder="Confirm your password" required>
+            </div>
+
+            <button type="button" id="send-otp">
+                <i class="fas fa-paper-plane"></i>
+                Send OTP
+            </button>
+
+            <div id="otp-section" style="display: none;">
+                <div class="input-group">
+                    <i class="fas fa-key"></i>
+                    <input type="text" id="otp" placeholder="Enter OTP">
+                </div>
+                <button type="button" id="verify-otp">
+                    <i class="fas fa-check"></i>
+                    Verify OTP
+                </button>
+            </div>
+
+            <button type="submit" id="signup-btn" disabled>
+                <i class="fas fa-user-plus"></i>
+                Create Account
+            </button>
+        </form>
+        <p>Already have an account? <a href="login.html">Login here</a></p>
+    </section>
+<script src="assets/config.js"></script>
+<script src="assets/notifications.js"></script>
+<script src="assets/signup.js"></script>
+<script src="assets/header.js"></script>
+
+</body>
+</html>

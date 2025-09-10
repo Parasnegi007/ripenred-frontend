@@ -1,0 +1,1529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ripe'n Red | Thank You!</title>
+    <meta name="description" content="Thank you for your order! Your fresh Himalayan fruits from Ripe'n Red are being prepared for delivery." />
+    <meta name="keywords" content="order confirmation, Ripe'n Red, thank you, Himalayan fruits, fresh produce delivery" />
+    <meta name="author" content="Ripe'n Red" />
+    <meta name="robots" content="noindex, nofollow" />
+    <link rel="canonical" href="https://ripenred.com/order-confirmation.html" />
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Thank You | Ripe'n Red" />
+    <meta property="og:description" content="Your order has been confirmed! Fresh Himalayan fruits are on their way." />
+    <meta property="og:image" content="https://ripenred.com/assets/images/logo1.webp" />
+    <meta property="og:url" content="https://ripenred.com/order-confirmation.html" />
+    <meta property="og:type" content="website" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Thank You | Ripe'n Red" />
+    <meta name="twitter:description" content="Your order has been confirmed! Fresh Himalayan fruits are on their way." />
+    <meta name="twitter:image" content="https://ripenred.com/assets/images/logo1.webp" />
+    
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+    <!-- GSAP for smooth animations -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+<!-- Font Awesome for fruit & blender icons -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="assets/additional.css">
+    <link rel="stylesheet" href="assets/common.css">
+</head>
+
+<body>
+  <section class="text-carousel">
+  <div class="carousel-text">
+    <div class="announcement">"Cultivating Brilliance in Khadrala’s Verdant Heights"</div>
+    <div class="announcement">Get 20% off on your first purchase! <strong>Limited time only!</strong></div>
+    <div class="announcement">Exclusive fresh arrivals this season!</div>
+    <div class="announcement">Shop sustainably—handpicked quality guaranteed!</div>
+  </div>
+</section>
+
+<section class="header-top">  <!--dashboard on left-->
+        <div class="dashboard-container">
+            <a href="dashboard.html">
+                <i class="fa fa-user navlogo" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div id="searchbar" class="searchbarcontainer">
+        <input type="text" id="searchbox" placeholder="Type to search eg. Honey Crisp" />
+         <button id="searchsubmit">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+   
+<div id="searchcontainer" style="display: none;">
+        <h1>Search Results</h1>
+        <div id="searchresults"></div>
+    </div>
+    </div>
+    <div class="top-logo">
+                <a href="index.html"><img src="assets/images/logo1.webp" alt="logo"></a>
+            
+            </div>
+            <div class="header-right-top">
+             <div class="wishlist-container">
+                <a href="wishlist.html">
+                    <i class="fa fa-heart navlogo" aria-hidden="true"></i>
+                    <span class="iconlabel">Wishlist</span>
+                </a>
+            </div>
+            <div class="cart-container">
+                <a href="cart.html">
+                    <i class="fa fa-shopping-cart navlogo" aria-hidden="true"></i>
+                    <span class="iconlabel">Cart</span>
+                </a>
+            </div>
+            </div>
+       
+</section>
+        <header>
+        
+        <!-- Menu Button for Mobile -->
+        <div id="menu-bar" class="menu-bar">
+            <button id="menu-toggle" class="menu-toggle">☰</button>
+        </div>
+    
+       <!-- Side Menu Container -->
+        <div id="side-menu" class="side-menu">
+              <!-- Add the Dashboard badge here -->
+            <div class="menu-logo">
+                <a href="index.html"><img src="assets/images/logo1.webp" alt="logo"></a>
+            
+            </div>
+            <div class="dashboard-container">
+                <a href="dashboard.html">
+                    <i class="fa fa-user user-logo" aria-hidden="true"></i>
+                     <span class="menuiconlabel">user</span>
+                </a>
+            </div>
+           
+            <ul>
+               <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li> <a href="guest-dashboard.html">Track Order</a></li>
+                <li> <a href="https://docs.google.com/forms/d/e/1FAIpQLScy6fvo5GcYl_hS4sKnVWnxxIlQ55O3-QbdlpY7SsemWeKuSg/viewform?usp=dialog" target="_blank">Bulk Order</a>
+        </li>
+            </ul>
+            
+        </div>
+    
+    
+        <!-- Add the Dashboard badge here -->
+            <div class="mid-logo">
+                <a href="index.html"><img src="assets/images/logo1.webp" alt="logo"></a>
+            
+            </div>
+      
+        <!-- Navigation Links (Desktop) -->
+        <div class="nav-links">
+            <nav>
+                
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                   
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+                <!-- Search Bar (Hidden Initially) -->
+       <div id="search-bar" class="search-bar-container">
+        <input type="text" id="search-box" placeholder="Type to search eg. Honey Crisp" />
+    <button id="search-submit">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+
+    </div>
+    
+        <!-- Cart & Wishlist on the Right -->
+        <div class="header-right">
+            <!-- Search Button -->
+            <div id="search-btn">
+                <i class="fa fa-search nav-logo" aria-hidden="true"></i> 
+                <span class="icon-label">Search</span>
+            </div>
+            <div class="wishlist-container">
+                <a href="wishlist.html">
+                    <i class="fa fa-heart nav-logo" aria-hidden="true"></i>
+                    <span class="icon-label">Wishlist</span>
+                </a>
+            </div>
+            <div class="cart-container">
+                <a href="cart.html">
+                    <i class="fa fa-shopping-cart nav-logo" aria-hidden="true"></i>
+                    <span class="icon-label">Cart</span>
+                </a>
+                <span id="cart-count" class="cart-count"></span>
+            </div>
+        </div>
+    </header>
+    <div id="search-container" style="display: none;">
+        <h1>Search Results</h1>
+        <div id="search-results"></div>
+    </div>
+
+    <!-- Breadcrumb Navigation -->
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="cart.html">Cart</a></li>
+            <li><a href="order-confirmation.html">Order Confirmation</a></li>
+        </ol>
+    </nav>
+
+
+<div class="confirmation-hero creative-bg">
+  <div class="floating-fruits">
+    <!-- Apple -->
+    <svg class="fruit apple" width="38" height="38" viewBox="0 0 38 38"><ellipse cx="19" cy="22" rx="13" ry="12" fill="#e74c3c"/><ellipse cx="19" cy="13" rx="3" ry="2" fill="#27ae60"/></svg>
+    <!-- Orange -->
+    <svg class="fruit orange" width="32" height="32" viewBox="0 0 32 32"><circle cx="16" cy="16" r="14" fill="#f39c12"/><ellipse cx="16" cy="7" rx="4" ry="2" fill="#27ae60"/></svg>
+    <!-- Cherry -->
+    <svg class="fruit cherry" width="28" height="28" viewBox="0 0 28 28"><circle cx="10" cy="18" r="8" fill="#e74c3c"/><circle cx="20" cy="16" r="6" fill="#a91101"/><path d="M10 10 Q14 8 18 10" stroke="#27ae60" stroke-width="2" fill="none"/></svg>
+    <!-- Decorative elements -->
+    <div class="fruit-decoration decoration-1"></div>
+    <div class="fruit-decoration decoration-2"></div>
+  </div>
+  <div class="checkmark-anim">
+    <div class="checkmark-pulse"></div>
+    <svg viewBox="0 0 52 52" class="checkmark-svg" aria-hidden="true">
+      <circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" />
+      <path class="checkmark-check" fill="none" d="M14 27l7 7 16-16" />
+    </svg>
+  </div>
+  <h1 class="confirmation-title">Thank You for Your Order!</h1>
+  <p class="confirmation-subtitle">Your fresh <span class="highlight-text">Himalayan fruits</span> are being carefully prepared for delivery.</p>
+</div>
+
+<div class="order-progress">
+  <div class="progress-container">
+    <div class="progress-step active">
+      <div class="step-icon"><i class="fa fa-clipboard-check"></i></div>
+      <span class="step-label">Order Placed</span>
+    </div>
+    <div class="progress-bar"></div>
+    <div class="progress-step">
+      <div class="step-icon"><i class="fa fa-cogs"></i></div>
+      <span class="step-label">Processing</span>
+    </div>
+    <div class="progress-bar"></div>
+    <div class="progress-step">
+      <div class="step-icon"><i class="fa fa-truck"></i></div>
+      <span class="step-label">Shipped</span>
+    </div>
+    <div class="progress-bar"></div>
+    <div class="progress-step">
+      <div class="step-icon"><i class="fa fa-home"></i></div>
+      <span class="step-label">Delivered</span>
+    </div>
+  </div>
+</div>
+
+<div class="confirmation-wrapper">
+  <div class="confirmation-card glass">
+    <h2 class="order-success">Order Confirmed <i class="fa fa-check-circle" style="color:#28a745"></i></h2>
+    
+    <!-- Order ID Badge -->
+    <div class="order-id-container">
+      <p class="order-id"><strong>Order ID:</strong> <span id="order-id">Loading...</span></p>
+    </div>
+    
+    <!-- Order Summary Card -->
+    <div class="order-summary">
+      <h3>Order Summary</h3>
+      <div class="summary-grid">
+        <div class="summary-item">
+          <span class="item-label">Items:</span>
+          <span class="item-value" id="order-items">Loading...</span>
+        </div>
+        <div class="summary-item">
+          <span class="item-label">Total:</span>
+          <span class="item-value total" id="order-total">Loading...</span>
+        </div>
+        <div class="summary-item">
+          <span class="item-label">Shipping:</span>
+          <span class="item-value success" id="order-shipping">Loading...</span>
+        </div>
+        <div class="summary-item">
+          <span class="item-label">Delivery:</span>
+          <span class="item-value" id="order-delivery">Loading...</span>
+        </div>
+      </div>
+      
+      <!-- Detailed Order Items -->
+      <div class="order-items-detailed" id="order-items-detailed" style="display: none;">
+        <h4>Items Ordered</h4>
+        <div class="items-list" id="items-list"></div>
+      </div>
+      
+      <!-- Pricing Breakdown -->
+      <div class="pricing-breakdown" id="pricing-breakdown" style="display: none;">
+        <div class="pricing-item">
+          <span>Subtotal:</span>
+          <span id="subtotal-amount">-</span>
+        </div>
+        <div class="pricing-item discount" id="discount-row" style="display: none;">
+          <span>Discount:</span>
+          <span id="discount-amount">-</span>
+        </div>
+        <div class="pricing-item">
+          <span>Shipping:</span>
+          <span id="shipping-amount">-</span>
+        </div>
+        <div class="pricing-item total">
+          <span><strong>Final Total:</strong></span>
+          <span id="final-total"><strong>-</strong></span>
+        </div>
+      </div>
+      
+      <!-- Toggle button for detailed view -->
+      <button class="toggle-details" id="toggle-details">Show Details</button>
+    </div>
+    
+    <!-- Action Buttons -->
+    <div class="confirmation-actions">
+      <button id="trackOrderBtn" class="btn primary"><i class="fa fa-map-marker-alt"></i> Track Your Order</button>
+      <button id="continueShoppingBtn" class="btn secondary"><i class="fa fa-shopping-bag"></i> Continue Shopping</button>
+    </div>
+    
+    <!-- Additional Information -->
+    <div class="additional-info">
+      <p>A confirmation email has been sent to your registered email address.</p>
+      <p>Need help? <a href="contact.html" class="support-link">Contact our support team</a></p>
+    </div>
+    
+    <div class="confetti" id="confetti"></div>
+  </div>
+</div>
+
+<style>
+  /* Hero Section */
+  .confirmation-hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 20px 40px 20px;
+    background: linear-gradient(120deg, #f8fafc 60%, #e0e7ef 100%);
+    border-radius: 0 0 32px 32px;
+    box-shadow: 0 4px 24px rgba(169,17,1,0.07);
+    margin-bottom: 0;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+  }
+  
+  .creative-bg::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; width: 100%; height: 100%;
+    background: radial-gradient(circle at 80% 20%, #ffe5e0 0%, transparent 60%),
+                radial-gradient(circle at 20% 80%, #e0f7fa 0%, transparent 60%),
+                linear-gradient(120deg, #f8fafc 60%, #e0e7ef 100%);
+    opacity: 0.7;
+    z-index: 0;
+  }
+  
+  /* Floating Fruits */
+  .floating-fruits {
+    position: absolute;
+    left: 0; top: 0; width: 100%; height: 100%;
+    pointer-events: none;
+    z-index: 2;
+  }
+  
+  .fruit {
+    position: absolute;
+    opacity: 0.85;
+    filter: drop-shadow(0 2px 8px rgba(0,0,0,0.1));
+    animation: floatFruit 5s ease-in-out infinite alternate;
+  }
+  
+  .fruit.apple { left: 8%; top: 18px; animation-delay: 0s; }
+  .fruit.cherry { right: 12%; top: 38px; animation-delay: 1.2s; }
+  .fruit.orange { left: 50%; top: 0; transform: translateX(-50%); animation-delay: 2.1s; }
+  
+  .fruit-decoration {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.6;
+    animation: floatFruit 6s ease-in-out infinite alternate;
+  }
+  
+  .decoration-1 {
+    top: 16px;
+    left: 20%;
+    width: 8px;
+    height: 8px;
+    background-color: #f39c12;
+    animation-delay: 3s;
+  }
+  
+  .decoration-2 {
+    top: 8px;
+    right: 25%;
+    width: 6px;
+    height: 6px;
+    background-color: #27ae60;
+    animation-delay: 4s;
+  }
+  
+  @keyframes floatFruit {
+    0% { transform: translateY(0) scale(1); }
+    100% { transform: translateY(18px) scale(1.08); }
+  }
+  
+  /* Checkmark Animation */
+  .checkmark-anim {
+    margin-bottom: 28px;
+    position: relative;
+  }
+  
+  .checkmark-pulse {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: rgba(40, 167, 69, 0.1);
+    animation: pulse 2s ease-in-out infinite;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  
+  @keyframes pulse {
+    0% { transform: translateX(-50%) scale(0.95); opacity: 0.6; }
+    50% { transform: translateX(-50%) scale(1.05); opacity: 0.3; }
+    100% { transform: translateX(-50%) scale(0.95); opacity: 0.6; }
+  }
+  
+  .checkmark-svg {
+    width: 80px;
+    height: 80px;
+    display: block;
+    position: relative;
+    z-index: 1;
+  }
+  
+  .checkmark-circle {
+    stroke: #28a745;
+    stroke-width: 2;
+    stroke-dasharray: 166;
+    stroke-dashoffset: 166;
+    fill: none;
+    animation: stroke 0.6s cubic-bezier(0.65,0,0.45,1) forwards;
+  }
+  
+  .checkmark-check {
+    stroke: #28a745;
+    stroke-width: 4;
+    stroke-linecap: round;
+    stroke-dasharray: 48;
+    stroke-dashoffset: 48;
+    animation: stroke 0.4s 0.6s cubic-bezier(0.65,0,0.45,1) forwards;
+  }
+  
+  @keyframes stroke {
+    to { stroke-dashoffset: 0; }
+  }
+  
+  .confirmation-title {
+    font-size: 2.5rem;
+    color: #a91101;
+    font-weight: 800;
+    margin-bottom: 14px;
+    letter-spacing: 0.7px;
+    text-align: center;
+    text-shadow: 0 2px 12px rgba(255,255,255,0.5), 0 1px 0 #fff;
+    z-index: 3;
+    animation: fadeIn 0.8s ease-out forwards;
+  }
+  
+  .confirmation-subtitle {
+    font-size: 1.25rem;
+    color: #444;
+    margin-bottom: 0;
+    text-align: center;
+    z-index: 3;
+    text-shadow: 0 1px 0 #fff, 0 2px 8px #e9ecef;
+    animation: fadeIn 0.8s 0.2s ease-out forwards;
+    opacity: 0;
+  }
+  
+  .highlight-text {
+    font-weight: 600;
+    color: #006837;
+  }
+  
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  
+  /* Order Progress */
+  .order-progress {
+    padding: 30px 10px;
+    background: #fff;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 700px;
+    margin: 0 auto;
+    gap: 8px;
+  }
+  
+  .progress-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.7;
+    transition: all 0.3s ease;
+  }
+  
+  .step-icon {
+    background: #fff;
+    color: #a91101;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border: 2px solid #f0f0f0;
+    transition: all 0.3s ease;
+  }
+  
+  .step-label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #555;
+  }
+  
+  .progress-step.active {
+    opacity: 1;
+  }
+  
+  .progress-step.active .step-icon {
+    background: #a91101;
+    color: #fff;
+    border-color: #a91101;
+    transform: scale(1.1);
+    box-shadow: 0 4px 12px rgba(169,17,1,0.2);
+  }
+  
+  .progress-step.active .step-label {
+    color: #a91101;
+    font-weight: 700;
+  }
+  
+  .progress-bar {
+    flex: 1;
+    height: 4px;
+    background: linear-gradient(90deg, #a91101 50%, #e0e7ef 50%);
+    border-radius: 2px;
+    min-width: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Confirmation Card */
+  .confirmation-wrapper {
+    min-height: 60vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background: linear-gradient(to right, #f8f9fa, #e9ecef);
+    padding: 40px 20px 80px 20px;
+  }
+  
+  .confirmation-card.glass {
+    background: rgba(255,255,255,0.97);
+    -webkit-backdrop-filter: blur(14px) saturate(1.3);
+    backdrop-filter: blur(14px) saturate(1.3);
+    padding: 48px 32px;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 24px;
+    box-shadow: 0 12px 48px 0 rgba(169,17,1,0.15), 0 2px 12px 0 rgba(0,0,0,0.06);
+    text-align: center;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+    position: relative;
+    overflow: visible;
+    border: 1.5px solid #f3f4f6;
+    transition: box-shadow 0.3s;
+    z-index: 3;
+    animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+  
+  @keyframes scaleIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+  }
+  
+  .order-success {
+    color: #28a745;
+    font-size: 1.75rem;
+    margin-bottom: 20px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    text-shadow: 0 1px 0 #fff, 0 2px 8px #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .order-id-container {
+    margin-bottom: 24px;
+  }
+  
+  .order-id {
+    font-size: 1.13rem;
+    color: #a91101;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    background: #f8fafc;
+    border-radius: 12px;
+    display: inline-block;
+    padding: 10px 24px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    border: 1px solid rgba(169,17,1,0.1);
+  }
+  
+  .order-summary {
+    background: #f8fafc;
+    border-radius: 16px;
+    padding: 24px;
+    margin: 0 auto 24px auto;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    text-align: left;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .order-summary h3 {
+    font-size: 1.25rem;
+    color: #a91101;
+    margin-bottom: 16px;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+  
+  .summary-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .item-label {
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .item-value {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .item-value.total {
+    color: #a91101;
+    font-weight: 700;
+  }
+  
+  .item-value.success {
+    color: #28a745;
+  }
+  
+  /* Detailed Order Items Styles */
+  .order-items-detailed {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .order-items-detailed h4 {
+    font-size: 1.1rem;
+    color: #a91101;
+    margin-bottom: 12px;
+    font-weight: 600;
+    text-align: center;
+  }
+  
+  .items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .order-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e8e8e8;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  }
+  
+  .item-info {
+    flex: 1;
+  }
+  
+  .item-name {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 4px;
+  }
+  
+  .item-details {
+    display: flex;
+    gap: 12px;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  
+  .item-subtotal {
+    font-weight: 600;
+    color: #a91101;
+    font-size: 1.05rem;
+  }
+  
+  /* Pricing Breakdown Styles */
+  .pricing-breakdown {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #e0e0e0;
+  }
+  
+  .pricing-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    font-size: 1rem;
+  }
+  
+  .pricing-item.discount {
+    color: #28a745;
+  }
+  
+  .pricing-item.total {
+    border-top: 2px solid #a91101;
+    margin-top: 8px;
+    padding-top: 12px;
+    font-size: 1.1rem;
+    color: #a91101;
+  }
+  
+  /* Toggle Details Button */
+  .toggle-details {
+    margin-top: 16px;
+    padding: 8px 16px;
+    background: transparent;
+    border: 1px solid #a91101;
+    color: #a91101;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s ease;
+    width: 100%;
+  }
+  
+  .toggle-details:hover {
+    background: #a91101;
+    color: #fff;
+  }
+  
+  .confirmation-actions {
+    margin: 30px 0;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  
+  .btn {
+    padding: 14px 28px;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(.4,0,.2,1);
+    border: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    letter-spacing: 0.1px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .btn.primary {
+    background: linear-gradient(90deg, #a91101 60%, #e74c3c 100%);
+    color: #fff;
+    border: 2px solid #a91101;
+    box-shadow: 0 4px 12px rgba(169,17,1,0.2);
+  }
+  
+  .btn.secondary {
+    background: linear-gradient(90deg, #006837 60%, #27ae60 100%);
+    color: #fff;
+    border: 2px solid #006837;
+    box-shadow: 0 4px 12px rgba(0,104,55,0.2);
+  }
+  
+  .btn::after {
+    content: '';
+    position: absolute;
+    left: -60%; top: 0; width: 60%; height: 100%;
+    background: linear-gradient(120deg, rgba(255,255,255,0.5) 0%, rgba(255,255,255,0) 100%);
+    transform: skewX(-20deg);
+    transition: left 0.5s cubic-bezier(.4,0,.2,1);
+    z-index: 0;
+  }
+  
+  .btn:hover::after {
+    left: 110%;
+  }
+  
+  .btn.primary:hover {
+    background: #fff;
+    color: #a91101;
+    border: 2px solid #a91101;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(169,17,1,0.25);
+  }
+  
+  .btn.secondary:hover {
+    background: #fff;
+    color: #006837;
+    border: 2px solid #006837;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,104,55,0.25);
+  }
+  
+  .additional-info {
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid #eee;
+    font-size: 0.95rem;
+    color: #666;
+  }
+  
+  .support-link {
+    color: #a91101;
+  display: contents;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.2s ease;
+  }
+  
+  .support-link:hover {
+    text-decoration: underline;
+    color: #e74c3c;
+  }
+  
+  .confetti {
+    position: absolute;
+    left: 0; top: 0; 
+    width: 100%; 
+    height: 100%;
+     pointer-events: none;
+    z-index: 2;
+  }
+  
+  .confetti-piece {
+    position: absolute;
+    top: 0;
+    opacity: 0.85;
+    border-radius: 2px;
+    pointer-events: none;
+    animation: confetti-fall 1.6s cubic-bezier(.6,.2,.4,1) forwards;
+  }
+  
+  @keyframes confetti-fall {
+    to { transform: translateY(800px) rotate(360deg); opacity: 0.4; }
+  }
+  
+  /* Responsive Styles */
+  @media (max-width: 768px) {
+    .confirmation-title { font-size: 2rem; }
+    .confirmation-subtitle { font-size: 1.1rem; }
+    .progress-container { flex-wrap: wrap; justify-content: space-around; }
+    .progress-bar { display: none; }
+    .confirmation-card.glass { padding: 32px 20px; }
+    .summary-grid { grid-template-columns: 1fr; }
+    .confirmation-actions { flex-direction: column; }
+    .btn { width: 100%; justify-content: center; }
+  }
+  
+  @media (max-width: 480px) {
+    .confirmation-hero { padding: 40px 16px 32px 16px; }
+    .checkmark-svg { width: 70px; height: 70px; }
+    .checkmark-pulse { width: 70px; height: 70px; }
+    .confirmation-title { font-size: 1.8rem; }
+    .order-success { font-size: 1.5rem; }
+    .order-id { font-size: 1rem; padding: 8px 16px; }
+    .order-summary { padding: 16px; }
+    .step-icon { width: 40px; height: 40px; font-size: 1rem; }
+  }
+</style>
+
+<script>
+// Enhanced Confetti animation
+function launchConfetti() {
+  const confetti = document.getElementById('confetti');
+  if (!confetti) return;
+  confetti.innerHTML = '';
+  
+  // Define brand colors for confetti
+  const colors = [
+    '#a91101', // brand red
+    '#e74c3c', // light red
+    '#006837', // brand green
+    '#27ae60', // light green
+    '#f39c12', // orange
+    '#28a745'  // success green
+  ];
+  
+  // Create more confetti pieces
+  for (let i = 0; i < 50; i++) {
+    const el = document.createElement('div');
+    el.className = 'confetti-piece';
+    el.style.left = Math.random() * 100 + '%';
+    el.style.background = colors[Math.floor(Math.random() * colors.length)];
+    el.style.animationDelay = (Math.random() * 2) + 's';
+    el.style.width = (4 + Math.random() * 8) + 'px';
+    el.style.height = (8 + Math.random() * 12) + 'px';
+    el.style.opacity = 0.8;
+    el.style.transform = `rotate(${Math.random() * 360}deg)`;
+    confetti.appendChild(el);
+  }
+  
+  // Clear confetti after animation completes
+  setTimeout(() => {
+    confetti.innerHTML = '';
+  }, 3000);
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  // Enhanced animation sequence
+  setTimeout(() => {
+    // Animate checkmark first
+    const checkmark = document.querySelector('.checkmark-anim');
+    if (checkmark) checkmark.style.opacity = 1;
+    
+    // Then show confetti
+    setTimeout(launchConfetti, 400);
+    
+    // Animate title and subtitle with staggered timing
+    const title = document.querySelector('.confirmation-title');
+    const subtitle = document.querySelector('.confirmation-subtitle');
+    if (title) title.style.opacity = 1;
+    if (subtitle) setTimeout(() => { subtitle.style.opacity = 1; }, 200);
+    
+    // Animate progress steps
+    setTimeout(() => {
+      document.querySelectorAll('.progress-step')[0].classList.add('active');
+    }, 400);
+  }, 300);
+  
+  // Get URL parameters
+  const urlParams = new URLSearchParams(window.location.search);
+  const urlOrderId = urlParams.get('orderId');
+  const paymentStatus = urlParams.get('status');
+  const errorType = urlParams.get('error');
+  const paymentMethod = urlParams.get('method');
+  
+  // Get order ID from URL or localStorage or generate a new one
+  let orderId = urlOrderId || localStorage.getItem("orderId");
+  if (!orderId) {
+    orderId = "RR-" + Date.now();
+    localStorage.setItem("orderId", orderId);
+  }
+  document.getElementById("order-id").textContent = orderId;
+  
+  // Fetch actual order data from backend
+  try {
+    await fetchOrderData(orderId);
+  } catch (error) {
+    console.error('Error in fetchOrderData:', error);
+    displayFallbackOrderData();
+  }
+  
+  // Payment status handling
+  const isPhonePePayment = window.location.href.includes('phonepe-return') || paymentMethod === 'phonepe';
+  if (errorType) {
+    document.querySelector('.order-success').innerHTML = 'Payment Failed <i class="fa fa-times-circle" style="color:#dc3545"></i>';
+    document.querySelector('.order-success').style.color = '#dc3545';
+    
+    // Handle different error types
+    switch (errorType) {
+      case 'payment_failed':
+        document.querySelector('.order-id').textContent = 'Your payment could not be processed. Please try again.';
+        break;
+      case 'payment_cancelled':
+        document.querySelector('.order-id').textContent = 'Payment was cancelled. You can try again anytime.';
+        break;
+      case 'verification_failed':
+        document.querySelector('.order-id').textContent = 'Payment verification failed. Please contact support if amount was debited.';
+        break;
+      case 'order_not_found':
+        document.querySelector('.order-id').textContent = 'Order not found. Please check your order ID.';
+        break;
+      default:
+        document.querySelector('.order-id').textContent = 'An error occurred while processing your payment.';
+    }
+    
+    // Show error checkmark
+    document.querySelector('.checkmark-anim').innerHTML = '<div class="checkmark-pulse" style="background-color: rgba(220,53,69,0.1);"></div><svg viewBox="0 0 52 52" class="checkmark-svg"><circle class="checkmark-circle" cx="26" cy="26" r="25" fill="none" stroke="#dc3545"/><path class="checkmark-check" fill="none" stroke="#dc3545" d="M16 18l20 20 M36 18l-20 20"/></svg>';
+  } else if (paymentStatus === 'success') {
+    // Show success message for different payment methods
+    document.querySelector('.order-success').innerHTML = isPhonePePayment ? 'PhonePe Payment Successful! <i class="fa fa-check-circle" style="color:#28a745"></i>' : 'Payment Successful! <i class="fa fa-check-circle" style="color:#28a745"></i>';
+    document.querySelector('.order-success').style.color = '#28a745';
+  }
+  
+  // Set up event listeners for buttons
+  const isLoggedIn = !!localStorage.getItem("authToken");
+  document.getElementById("trackOrderBtn").addEventListener("click", () => {
+    window.location.href = isLoggedIn ? "dashboard.html" : "guest-dashboard.html";
+  });
+  
+  document.getElementById("continueShoppingBtn").addEventListener("click", () => {
+    window.location.href = "shop.html";
+  });
+  
+  // Store order ID in localStorage if not already present
+  if (urlOrderId && !localStorage.getItem("orderId")) {
+    localStorage.setItem("orderId", urlOrderId);
+  }
+  
+  // Setup toggle details button
+  const toggleBtn = document.getElementById('toggle-details');
+  if (toggleBtn) {
+    toggleBtn.addEventListener('click', toggleOrderDetails);
+  }
+});
+
+// Function to fetch order data from backend
+async function fetchOrderData(orderId) {
+  if (!orderId || orderId === 'N/A') {
+    displayFallbackOrderData();
+    return;
+  }
+  
+  try {
+    // Wait for API config to load
+    let retries = 0;
+    while (!window.API_CONFIG && retries < 10) {
+      await new Promise(resolve => setTimeout(resolve, 100));
+      retries++;
+    }
+    
+    const apiUrl = getAPIURL();
+    let orderData = null;
+    
+    // Method 1: Check if user is logged in and fetch from user orders
+    const authToken = localStorage.getItem('authToken');
+    if (authToken) {
+      try {
+        const response = await fetch(`${apiUrl}/orders/my-orders`, {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${authToken}`,
+            'Content-Type': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          const data = await response.json();
+          const foundOrder = data.orders?.find(order => order.orderId === orderId);
+          if (foundOrder) {
+            orderData = foundOrder;
+            console.log('✅ Order data fetched from user orders');
+          }
+        }
+      } catch (error) {
+        console.warn('Failed to fetch from my-orders endpoint:', error);
+      }
+    }
+    
+    // Method 2: Try guest tracking with stored credentials
+    if (!orderData) {
+      const guestEmail = localStorage.getItem('guestEmail') || sessionStorage.getItem('guestEmail');
+      const guestPhone = localStorage.getItem('guestPhone') || sessionStorage.getItem('guestPhone');
+      
+      if (guestEmail && guestPhone) {
+        try {
+          const response = await fetch(`${apiUrl}/orders/track-order`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              email: guestEmail,
+              phone: guestPhone,
+              orderId: orderId
+            })
+          });
+          
+          if (response.ok) {
+            const data = await response.json();
+            const foundOrder = data.orders?.find(order => order.orderId === orderId);
+            if (foundOrder) {
+              orderData = foundOrder;
+              console.log('✅ Order data fetched from guest tracking');
+            }
+          }
+        } catch (error) {
+          console.warn('Failed to fetch from track-order endpoint:', error);
+        }
+      }
+    }
+    
+    // Method 3: Try to get cached order data from localStorage/sessionStorage
+    if (!orderData) {
+      const cachedOrderData = localStorage.getItem('currentOrderData') || sessionStorage.getItem('phonePeOrderData');
+      if (cachedOrderData) {
+        try {
+          const parsed = JSON.parse(cachedOrderData);
+          if (parsed.orderId === orderId || (parsed.orderData && parsed.orderData.orderId === orderId)) {
+            orderData = parsed.orderData || parsed;
+            console.log('✅ Order data retrieved from cache');
+          }
+        } catch (parseError) {
+          console.warn('Failed to parse cached order data:', parseError);
+        }
+      }
+    }
+    
+    if (orderData) {
+      displayOrderData(orderData);
+    } else {
+      console.warn('No order data found, using fallback');
+      displayFallbackOrderData();
+    }
+    
+  } catch (error) {
+    console.error('Error fetching order data:', error);
+    displayFallbackOrderData();
+  }
+}
+
+// Function to display actual order data
+function displayOrderData(order) {
+  try {
+    console.log('Displaying order data:', order);
+    
+    // Handle different data structures (from API vs cached)
+    const orderItems = order.orderItems || order.cartItems || [];
+    const finalTotal = order.finalTotal || order.totalPrice || 0;
+    const totalPrice = order.totalPrice || order.subtotal || 0;
+    const discountAmount = order.discountAmount || 0;
+    const shippingCharges = order.shippingCharges || 0;
+    
+    // Basic order info
+    const itemCount = orderItems.length;
+    const totalItems = orderItems.reduce((sum, item) => sum + (item.quantity || 0), 0);
+    
+    // Update basic summary
+    document.getElementById("order-items").textContent = totalItems > 0 
+      ? `${totalItems} items (${itemCount} ${itemCount === 1 ? 'product' : 'products'})`
+      : 'No items';
+    
+    document.getElementById("order-total").textContent = `₹${finalTotal}`;
+    
+    // Shipping info
+    document.getElementById("order-shipping").textContent = shippingCharges === 0 ? 'Free' : `₹${shippingCharges}`;
+    
+    // Delivery estimate based on order status
+    const deliveryText = getDeliveryEstimate(order.orderStatus || 'Pending');
+    document.getElementById("order-delivery").textContent = deliveryText;
+    
+    // Show detailed breakdown if we have order items
+    if (orderItems && orderItems.length > 0) {
+      populateDetailedOrderItems(orderItems);
+      populatePricingBreakdown({
+        totalPrice: totalPrice,
+        discountAmount: discountAmount,
+        shippingCharges: shippingCharges,
+        finalTotal: finalTotal,
+        appliedCoupons: order.appliedCoupons || []
+      });
+      
+      // Show the toggle button and enable details view
+      const toggleBtn = document.getElementById('toggle-details');
+      if (toggleBtn) {
+        toggleBtn.style.display = 'block';
+      }
+    }
+    
+    // Store order data for other scripts
+    localStorage.setItem('currentOrderData', JSON.stringify(order));
+    
+    // Store summary data for quick access
+    localStorage.setItem('orderItems', document.getElementById("order-items").textContent);
+    localStorage.setItem('orderTotal', document.getElementById("order-total").textContent);
+    localStorage.setItem('orderShipping', document.getElementById("order-shipping").textContent);
+    localStorage.setItem('orderDelivery', document.getElementById("order-delivery").textContent);
+    
+  } catch (error) {
+    console.error('Error displaying order data:', error);
+    displayFallbackOrderData();
+  }
+}
+
+// Function to display fallback data when API fails
+function displayFallbackOrderData() {
+  // Try to get from various localStorage sources first
+  const storedItems = localStorage.getItem('orderItems');
+  const storedTotal = localStorage.getItem('orderTotal');
+  const storedShipping = localStorage.getItem('orderShipping');
+  const storedDelivery = localStorage.getItem('orderDelivery');
+  
+  // Check if we have any checkout data from recent session
+  const cartData = localStorage.getItem('guestCart');
+  let itemsText = '3 (Mixed Fruits)';
+  let totalText = '₹799';
+  
+  if (cartData) {
+    try {
+      const cart = JSON.parse(cartData);
+      if (cart && cart.length > 0) {
+        const totalItems = cart.reduce((sum, item) => sum + (item.quantity || 0), 0);
+        const totalPrice = cart.reduce((sum, item) => sum + ((item.price || 0) * (item.quantity || 0)), 0);
+        itemsText = `${totalItems} items (${cart.length} ${cart.length === 1 ? 'product' : 'products'})`;
+        totalText = `₹${totalPrice}`;
+      }
+    } catch (error) {
+      console.warn('Failed to parse cart data for fallback:', error);
+    }
+  }
+  
+  document.getElementById("order-items").textContent = storedItems || itemsText;
+  document.getElementById("order-total").textContent = storedTotal || totalText;
+  document.getElementById("order-shipping").textContent = storedShipping || 'Free';
+  document.getElementById("order-delivery").textContent = storedDelivery || '2-5 days';
+  
+  // Hide toggle button since we don't have detailed data
+  const toggleBtn = document.getElementById('toggle-details');
+  if (toggleBtn) {
+    toggleBtn.style.display = 'none';
+  }
+}
+
+// Function to populate detailed order items
+function populateDetailedOrderItems(orderItems) {
+  const itemsList = document.getElementById('items-list');
+  if (!itemsList) return;
+  
+  itemsList.innerHTML = '';
+  
+  orderItems.forEach(item => {
+    const itemDiv = document.createElement('div');
+    itemDiv.className = 'order-item';
+    
+    // Handle both API response format and cached data format
+    const itemName = item.name || item.title || 'Unknown Item';
+    const itemQuantity = item.quantity || 1;
+    const itemPrice = item.price || 0;
+    const itemSubtotal = item.subtotal || (itemPrice * itemQuantity);
+    
+    itemDiv.innerHTML = `
+      <div class="item-info">
+        <div class="item-name">${itemName}</div>
+        <div class="item-details">
+          <span class="item-quantity">Qty: ${itemQuantity}</span>
+          <span class="item-price">₹${itemPrice} each</span>
+        </div>
+      </div>
+      <div class="item-subtotal">₹${itemSubtotal}</div>
+    `;
+    itemsList.appendChild(itemDiv);
+  });
+}
+
+// Function to populate pricing breakdown
+function populatePricingBreakdown(order) {
+  const subtotalEl = document.getElementById('subtotal-amount');
+  const discountEl = document.getElementById('discount-amount');
+  const discountRow = document.getElementById('discount-row');
+  const shippingEl = document.getElementById('shipping-amount');
+  const finalTotalEl = document.getElementById('final-total');
+  
+  if (subtotalEl) subtotalEl.textContent = `₹${order.totalPrice || 0}`;
+  
+  // Show discount if applicable
+  const discountAmount = order.discountAmount || 0;
+  if (discountAmount > 0 && discountEl && discountRow) {
+    discountEl.textContent = `-₹${discountAmount}`;
+    discountRow.style.display = 'flex';
+  }
+  
+  const shippingCharges = order.shippingCharges || 0;
+  if (shippingEl) {
+    shippingEl.textContent = shippingCharges === 0 ? 'Free' : `₹${shippingCharges}`;
+  }
+  
+  if (finalTotalEl) {
+    finalTotalEl.innerHTML = `<strong>₹${order.finalTotal || order.totalPrice || 0}</strong>`;
+  }
+  
+  // Show applied coupons if any
+  if (order.appliedCoupons && order.appliedCoupons.length > 0) {
+    const couponsText = order.appliedCoupons.join(', ');
+    console.log('Applied coupons:', couponsText);
+  }
+}
+
+// Function to get delivery estimate based on order status
+function getDeliveryEstimate(orderStatus) {
+  switch (orderStatus) {
+    case 'Processing':
+      return '2-5 business days';
+    case 'Shipped':
+      return '1-3 business days';
+    case 'Delivered':
+      return 'Delivered';
+    case 'Canceled':
+      return 'Cancelled';
+    default:
+      return '2-5 business days';
+  }
+}
+
+// Function to toggle order details view
+function toggleOrderDetails() {
+  const detailsSection = document.getElementById('order-items-detailed');
+  const pricingSection = document.getElementById('pricing-breakdown');
+  const toggleBtn = document.getElementById('toggle-details');
+  
+  if (detailsSection.style.display === 'none') {
+    detailsSection.style.display = 'block';
+    pricingSection.style.display = 'block';
+    toggleBtn.textContent = 'Hide Details';
+  } else {
+    detailsSection.style.display = 'none';
+    pricingSection.style.display = 'none';
+    toggleBtn.textContent = 'Show Details';
+  }
+}
+
+// Helper function to get API URL (enhanced with config.js integration)
+function getAPIURL() {
+  // Use the global API config if available
+  if (window.API_CONFIG && window.API_CONFIG.API_URL) {
+    return window.API_CONFIG.API_URL;
+  }
+  
+  // Fallback logic
+  const hostname = window.location.hostname;
+  if (hostname === 'localhost' || hostname === '127.0.0.1') {
+    return 'http://localhost:3000/api';
+  } else {
+    // For production, use same origin
+    return window.location.origin + '/api';
+  }
+}
+</script>
+
+<!-- Trust Indicators Section -->
+<section class="trust-indicators">
+  <div class="trust-container">
+    <div class="trust-item">
+      <div class="trust-icon quality">
+        <i class="fa fa-check-circle"></i>
+      </div>
+      <h3>Quality Assured</h3>
+      <p>Fresh fruits handpicked from Himalayan heights</p>
+    </div>
+    
+    <div class="trust-item">
+      <div class="trust-icon packaging">
+        <i class="fa fa-box"></i>
+      </div>
+      <h3>Secure Packaging</h3>
+      <p>Carefully packed to preserve freshness</p>
+    </div>
+    
+    <div class="trust-item">
+      <div class="trust-icon delivery">
+        <i class="fa fa-clock"></i>
+      </div>
+      <h3>Fast Delivery</h3>
+      <p>Quick and reliable delivery service</p>
+    </div>
+  </div>
+</section>
+
+<section class="slogan-bottom"><p>"Discover <strong>nature's treasures</strong>—fresh fruits from the<strong> Himalayan heights</strong>, delivered with care and love."</p></section>
+
+<style>
+  .trust-indicators {
+    padding: 60px 20px;
+    background-color: rgba(248, 249, 250, 0.7);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .trust-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+  }
+  
+  .trust-item {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .trust-icon {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 16px auto;
+    font-size: 2rem;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  }
+  
+  .trust-icon.quality {
+    background: linear-gradient(135deg, #28a745, #006837);
+  }
+  
+  .trust-icon.packaging {
+    background: linear-gradient(135deg, #a91101, #e74c3c);
+  }
+  
+  .trust-icon.delivery {
+    background: linear-gradient(135deg, #f39c12, #e67e22);
+  }
+  
+  .trust-item h3 {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+  }
+  
+  .trust-item p {
+    font-size: 0.95rem;
+    color: #666;
+    margin: 0;
+  }
+  
+  @media (max-width: 768px) {
+    .trust-container {
+      grid-template-columns: 1fr;
+      gap: 20px;
+    }
+    
+    .trust-indicators {
+      padding: 40px 20px;
+    }
+  }
+</style>
+
+
+ <footer class="site-footer">
+  <div class="footer-content">
+
+    <!-- Column 1: Logo + Sustainability -->
+    <div class="footer-branding">
+      <img src="assets/images/logo2.png" alt="Fresh Apples Logo" class="footer-logo" />
+      <p class="footer-sustainability">
+        Proudly promoting sustainable farming practices to protect our planet.
+      </p>
+    </div>
+
+        <!-- Column 2: Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <div class="footer-link-group">
+  <a href="https://docs.google.com/forms/d/e/1FAIpQLScy6fvo5GcYl_hS4sKnVWnxxIlQ55O3-QbdlpY7SsemWeKuSg/viewform?usp=dialog" target="_blank" rel="noopener">Bulk Orders</a>
+        <a href="about.html">About Us</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+      </div>
+    </div>
+
+<div class="footer-section">
+  <h3>Customer Support</h3>
+  <div class="footer-link-group">
+   <a href="contact.html#faq">FAQ</a>
+    <a href="contact.html">Help Center</a>
+    <a href="returns.html">Return Policy</a>
+     <a href="shipping-policy.html">Shipping Policy</a>
+  </div>
+</div>
+
+   <!-- Column 4: Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="footer-social-links">
+  <a href="https://www.facebook.com/ripenred/" target="_blank" rel="noopener" class="footer-social-icon"><i class="fab fa-facebook-f"></i> Facebook</a>
+  <a href="https://www.instagram.com/ripe_n_red/" target="_blank" rel="noopener" class="footer-social-icon"><i class="fab fa-instagram"></i> Instagram</a>
+  <a href="https://x.com/ripe_n_red" target="_blank" rel="noopener" class="footer-social-icon"><i class="fab fa-twitter"></i> Twitter</a>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <p>&copy;  2025 | Ripe'n Red</p>
+  </div>
+</footer>
+<script>
+  // Wait for everything (images, fonts, etc.) to fully load
+  window.addEventListener("load", function () {
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) {
+        // Delay and use requestAnimationFrame to ensure smooth scroll after full render
+        setTimeout(() => {
+          requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        }, 200);
+      }
+    }
+  });
+</script>
+     <script src="assets/config.js"></script>
+<script src="assets/header.js"></script>    
+
+</body>
+</html>

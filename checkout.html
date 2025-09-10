@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ripe'n Red | Checkout – Finalize Your Fresh Fruit Order</title>
+  <meta name="description" content="Secure your Ripe'n Red order with ease. Enter your details, choose your payment method, and get fresh Himalayan apples delivered to your door." />
+  <meta name="robots" content="noindex, nofollow" />
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <link rel="stylesheet" href="assets/checkout.css" />
+  <!-- Leaflet CSS for Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+  <!-- Open Graph Meta -->
+  <meta property="og:title" content="Checkout - Ripe'n Red | Himalayan Fruits" />
+  <meta property="og:description" content="Complete your purchase of handpicked Himalayan fruits. Safe and quick checkout." />
+  <meta property="og:image" content="https://ripenred.com/assets/images/logo1.webp" />
+  <meta property="og:url" content="https://ripenred.com/checkout.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://ripenred.com/checkout.html" />
+  
+  <!-- ✅ Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-YEJN0VHC28"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-YEJN0VHC28', {
+      page_title: 'Checkout',
+      page_location: window.location.href,
+      send_page_view: true
+    });
+  </script>
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+</head>
+<body>
+   
+<section class="text-carousel">
+  <div class="carousel-text">
+    <div class="announcement">"Cultivating Brilliance in Khadrala’s Verdant Heights"</div>
+    <div class="announcement">Get 20% off on your first purchase! <strong>Limited time only!</strong></div>
+    <div class="announcement">Exclusive fresh arrivals this season!</div>
+    <div class="announcement">Shop sustainably—handpicked quality guaranteed!</div>
+  </div>
+</section>
+<section class="header-top">  <!--dashboard on left-->
+
+    <div class="top-logo">
+                <a href="index.html"><img src="assets/images/logo1.webp" alt="logo"></a>
+            
+            </div>
+<header> 
+    <!-- Centered Logo -->
+    <div class="logo">
+        <h1>Checkout</h1>
+    </div></header>
+    <div class="checkout-container">
+        <!-- Left Section: Delivery & Payment -->     
+        <section class="checkout-form">
+            <h2>Saved Addresses</h2>
+<div id="saved-addresses">
+    <!-- Addresses will be injected here -->
+</div>
+            <h2>Billing & Shipping Details</h2>
+            <form id="checkoutForm">
+                <label for="name">Full Name*:</label>
+                <input type="text" id="name" name="name" required>
+                
+                <label for="email">Email*:</label>
+                <input type="email" id="email" name="email" required>
+                <span class="error-message"></span>
+                
+                <label for="phone">Phone*:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <span class="error-message"></span>
+                <label for="zipcode">ZIP / Postal Code*:</label>
+                <input type="text" id="zipcode" name="zipcode" required>
+                <span class="error-message"></span>
+                
+                <label for="street">House and Street Address*:</label>
+                <textarea id="street" name="street" rows="2" required></textarea>
+                
+                <label for="city">City*:</label>
+                <input type="text" id="city" name="city" required>
+                
+                <label for="state">State*:</label>
+                <select id="state" name="state" required>
+                    <option value="">Select State</option>
+                </select>
+                
+                <label for="country">Country*:</label>
+                <select id="country" name="country" required>
+                    <option value="">Select Country</option>
+                </select>
+                
+                <!-- Map Section -->
+                <div class="map-section">
+                    <label>Delivery Location (Drop a pin on the map)*:</label>
+                    <div id="delivery-map" style="height: 300px; width: 100%; border: 2px solid #ddd; border-radius: 8px; margin: 10px 0;"></div>
+                    <button type="button" id="fetchCurrentLocation" class="map-btn" style="margin-bottom: 8px;">📍 Use My Current Location</button>
+                    <p class="map-instructions">Click on the map to set your exact delivery location<strong> (If the auto-detected location isn’t accurate, please adjust it manually.)</strong></p>
+                    <input type="hidden" id="latitude" name="latitude">
+                    <input type="hidden" id="longitude" name="longitude">
+                    <p class="map-disclaimer" style="font-size: 0.95em;font-style: italic; color: #b00; margin-top: 8px;">
+                      Disclaimer:  We respectfully acknowledge that the map boundaries shown are based on OpenStreetMap data and may not align with the official boundaries recognized by the Government of India. We sincerely regret any unintended offense this may cause, as no disrespect is intended.
+                    </p>
+                </div>
+                
+                <button type="button" id="saveAddress">Save Address</button>
+
+                
+                              <h2>Payment Method</h2>
+                <div class="payment-methods">
+                    <div class="payment-option" data-method="razorpay">
+                        <input type="radio" id="razorpay" name="payment-method" value="razorpay" checked>
+                        <label for="razorpay">
+                            <div class="payment-info">
+                                <img src="assets/images/razorpay.png" alt="Razorpay" class="payment-logo">
+                                <div class="payment-details">
+                                    <span class="payment-name">Razorpay</span>
+                                    <span class="payment-desc">Pay securely with UPI, Cards, Net Banking & more</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                    
+                    <div class="payment-option" data-method="phonepe">
+                        <input type="radio" id="phonepe" name="payment-method" value="phonepe">
+                        <label for="phonepe">
+                            <div class="payment-info">
+                                <img src="assets/images/phonepe.png" alt="PhonePe" class="payment-logo">
+                                <div class="payment-details">
+                                    <span class="payment-name">PhonePe</span>
+                                    <span class="payment-desc">Pay instantly with UPI, Cards & Digital Wallets</span>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="button" id="proceedToPayment">PROCEED TO PAYMENT</button>
+                <button type="button" id="cancelOrder" onclick="window.location.href='cart.html'">Cancel</button>
+
+            </form>
+        </section>
+        
+        <!-- Right Section: Order Summary -->
+        <section class="order-summary">
+            <h2>Order Summary</h2>
+            <div id="order-items">
+                <!-- Items will be dynamically added here -->
+            </div>
+          <p class="order-total">Subtotal: ₹<span id="order-total"></span></p>
+
+            <!-- Coupon Code Section -->
+<div class="coupon-section">
+  <label for="couponInput">Have a Coupon?</label>
+  <div class="coupon-input-wrapper">
+    <input type="text" id="couponInput" placeholder="Enter coupon code">
+    <button id="applyCouponBtn">Apply Coupon</button>
+  </div>
+  <p id="couponMessage"></p>
+</div>
+
+        </section>
+    </div>
+    
+   <!-- Leaflet JavaScript for Map -->
+   <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+   <script src="assets/config.js"></script>
+   <script src="assets/notifications.js"></script>
+   <script src="assets/checkout.js"></script>
+   <script src="assets/header.js"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+  <!-- ✅ Analytics Helper -->
+  <script src="assets/analytics.js" defer></script>
+      
+</body>
+</html>

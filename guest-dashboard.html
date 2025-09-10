@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Ripe'n Red | Guest Dashboard & Order Tracking</title>
+  <meta name="description" content="Track your Ripe'n Red fruit orders easily and explore our pure Himalayan harvest. Join or log in to get the freshest seasonal fruits at your doorstep." />
+  <meta name="keywords" content="Ripe'n Red, fruit order tracking, guest dashboard, Himalayan fruits, fresh apples, seasonal fruits, organic fruits, Pure Plucks" />
+  <meta name="author" content="Ripe'n Red" />
+  <meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://ripenred.com/guest-dashboard.html" />
+
+<!-- Open Graph Meta for social media -->
+  <meta property="og:title" content="Ripe'n Red | Guest Dashboard & Order Tracking" />
+  <meta property="og:description" content="Track your orders and explore nature’s freshest produce with Ripe'n Red." />
+  <meta property="og:image" content="https://ripenred.com/assets/images/logo1.webp" />
+<meta property="og:url" content="https://ripenred.com/guest-dashboard.html" />
+  <meta property="og:type" content="website" />
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="assets/guestdashboard.css" />
+  <link rel="stylesheet" href="assets/common.css">
+</head>
+
+<body>
+
+<section class="text-carousel">
+  <div class="carousel-text">
+    <div class="announcement">"Cultivating Brilliance in Khadrala’s Verdant Heights"</div>
+    <div class="announcement">Get 20% off on your first purchase! <strong>Limited time only!</strong></div>
+    <div class="announcement">Exclusive fresh arrivals this season!</div>
+    <div class="announcement">Shop sustainably—handpicked quality guaranteed!</div>
+  </div>
+</section>
+
+<section class="header-top">  <!--dashboard on left-->
+        <div class="dashboard-container">
+            <a href="dashboard.html">
+                <i class="fa fa-user navlogo" aria-hidden="true"></i>
+            </a>
+        </div>
+        <div id="searchbar" class="searchbarcontainer">
+        <input type="text" id="searchbox" placeholder="Type to search eg. Honey Crisp" />
+         <button id="searchsubmit">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+   
+<div id="searchcontainer" style="display: none;">
+        <h2>Search Results</h2>
+        <div id="searchresults"></div>
+    </div>
+    </div>
+    <div class="top-logo">
+                <a href="index.html"><img src="assets/images/logo1.webp" alt="logo"></a>
+            
+            </div>
+            <div class="header-right-top">
+             <div class="wishlist-container">
+                <a href="wishlist.html">
+                    <i class="fa fa-heart navlogo" aria-hidden="true"></i>
+                    <span class="iconlabel">Wishlist</span>
+                </a>
+            </div>
+            <div class="cart-container">
+                <a href="cart.html">
+                    <i class="fa fa-shopping-cart navlogo" aria-hidden="true"></i>
+                    <span class="iconlabel">Cart</span>
+                </a>
+            </div>
+            </div>
+       
+</section>
+        <header>
+        
+        <!-- Menu Button for Mobile -->
+        <div id="menu-bar" class="menu-bar">
+            <button id="menu-toggle" class="menu-toggle">☰</button>
+        </div>
+     <!-- Side Menu Container -->
+        <div id="side-menu" class="side-menu">
+              <!-- Add the Dashboard badge here -->
+            <div class="menu-logo">
+                <a href="index.html"><img src="assets/images/logo1.webp" alt="logo"></a>
+            
+            </div>
+            <div class="dashboard-container">
+                <a href="dashboard.html">
+                    <i class="fa fa-user user-logo" aria-hidden="true"></i>
+                     <span class="menuiconlabel">user</span>
+                </a>
+            </div>
+           
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li> <a href="guest-dashboard.html">Track Order</a></li>
+                <li> <a href="https://docs.google.com/forms/d/e/1FAIpQLScy6fvo5GcYl_hS4sKnVWnxxIlQ55O3-QbdlpY7SsemWeKuSg/viewform?usp=dialog" target="_blank">Bulk Order</a>
+        </li>
+            </ul>
+            
+        </div>
+    
+    
+        <!-- Add the Dashboard badge here -->
+            <div class="mid-logo">
+                <a href="index.html"><img src="assets/images/logo1.webp" alt="logo"></a>
+            
+            </div>
+      
+        <!-- Navigation Links (Desktop) -->
+        <div class="nav-links">
+            <nav>
+                
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                   
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+                <!-- Search Bar (Hidden Initially) -->
+       <div id="search-bar" class="search-bar-container">
+        <input type="text" id="search-box" placeholder="Type to search eg. Honey Crisp" />
+    <button id="search-submit">
+        <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+
+    </div>
+    
+        <!-- Cart & Wishlist on the Right -->
+        <div class="header-right">
+            <!-- Search Button -->
+            <div id="search-btn">
+                <i class="fa fa-search nav-logo" aria-hidden="true"></i> 
+                <span class="icon-label">Search</span>
+            </div>
+            <div class="wishlist-container">
+                <a href="wishlist.html">
+                    <i class="fa fa-heart nav-logo" aria-hidden="true"></i>
+                    <span class="icon-label">Wishlist</span>
+                </a>
+            </div>
+            <div class="cart-container">
+                <a href="cart.html">
+                    <i class="fa fa-shopping-cart nav-logo" aria-hidden="true"></i>
+                    <span class="icon-label">Cart</span>
+                </a>
+                <span id="cart-count" class="cart-count"></span>
+            </div>
+        </div>
+    </header>
+    <div id="search-container" style="display: none;">
+        <h2>Search Results</h2>
+        <div id="search-results"></div>
+    </div>
+
+   
+
+<section id="himalayan-fruits-section">
+    <div class="backgroundimage"></div> <!-- Background image will be styled in CSS -->
+    <div class="content">
+        <div class="slogan">
+            <h11>Experience the Richness of <span class="bold-head"> Himalayan Fruits</span>, Born in the Coldest Climatic Paradise</h11>
+            <p>Our fruits are a gift from the peaks—bursting with flavor, grown in the purest air, and kissed by cold mountain breezes.</p>
+        </div>
+        <div class="fruit-image">
+            <img src="assets/images/sttra (1).webp" alt="Himalayan Fruit"> <!-- Replace with your fruit image URL -->
+        </div>
+    </div>
+</section>
+ <!-- Breadcrumb Navigation -->
+ <nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="guest-dashboard.html">Guest Dashboard</a></li>
+  </ol>
+</nav>
+
+        <section class="dash-board-container">
+  <div class="guest-dashboard">
+    <h2>Welcome, Guest</h2>
+  </div>
+  <div class="bttns">
+    <button class="login-btn" onclick="window.location.href='login.html'">Login </button>
+    <button class="signup-btn" onclick="window.location.href='signup.html'">Sign Up</button>
+  </div>
+        </section>
+
+  <section class="track-order-container">
+    <div class="track-order-section">
+        <h3>Track Your Order</h3>
+      
+        <label for="trackEmail">Email</label>
+        <input type="email" id="trackEmail" placeholder="Enter your email" />
+      
+        <label for="trackPhone">Phone</label>
+        <input type="text" id="trackPhone" placeholder="Enter your phone number" />
+    
+      
+        <button class="track-order-btn" id="trackBtn">Track Order</button>
+      
+        <div id="errorMessage" style="color: red; margin-top: 10px;"></div>
+      
+      
+      <!-- Show order result here -->
+      <div class="result-box" style="margin-top: 20px;"></div>
+    </div>
+       
+        </section>
+        
+        <section class="slogan-end"><p>"Experience the<strong> purest taste of nature</strong>, sourced from the majestic<strong> Himalayan peaks</strong>, and delivered fresh to your doorstep."</p></section>
+
+  
+
+ <footer class="site-footer">
+  <div class="footer-content">
+
+    <!-- Column 1: Logo + Sustainability -->
+    <div class="footer-branding">
+      <img src="assets/images/logo2.png" alt="Fresh Apples Logo" class="footer-logo" />
+      <p class="footer-sustainability">
+        Proudly promoting sustainable farming practices to protect our planet.
+      </p>
+    </div>
+
+        <!-- Column 2: Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <div class="footer-link-group">
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLScy6fvo5GcYl_hS4sKnVWnxxIlQ55O3-QbdlpY7SsemWeKuSg/viewform?usp=dialog" target="_blank">Bulk Orders</a>
+        <a href="about.html">About Us</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact Us</a>
+        <a href="policy.html">Privacy Policy</a>
+        <a href="terms.html">Terms & Conditions</a>
+      </div>
+    </div>
+
+<div class="footer-section">
+  <h3>Customer Support</h3>
+  <div class="footer-link-group">
+   <a href="contact.html#faq">FAQ</a>
+    <a href="contact.html">Help Center</a>
+    <a href="returns.html">Return Policy</a>
+     <a href="shipping-policy.html">Shipping Policy</a>
+  </div>
+</div>
+
+    
+    <!-- Column 4: Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="footer-social-links">
+        <a href="https://www.facebook.com/ripenred/" target="_blank" class="footer-social-icon"><i class="fab fa-facebook-f"></i> Facebook</a>
+        <a href="https://www.instagram.com/ripe_n_red/" target="_blank" class="footer-social-icon"><i class="fab fa-instagram"></i> Instagram</a>
+        <a href="https://x.com/ripe_n_red" target="_blank" class="footer-social-icon"><i class="fab fa-twitter"></i> Twitter</a>
+      </div>
+    </div>
+
+  </div>
+  <div class="footer-bottom">
+    <p>&copy;  2025 | Ripe'n Red</p>
+  </div>
+</footer>
+<script>
+  // Wait for everything (images, fonts, etc.) to fully load
+  window.addEventListener("load", function () {
+    const hash = window.location.hash;
+    if (hash) {
+      const target = document.querySelector(hash);
+      if (target) {
+        // Delay and use requestAnimationFrame to ensure smooth scroll after full render
+        setTimeout(() => {
+          requestAnimationFrame(() => {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+          });
+        }, 200);
+      }
+    }
+  });
+</script>
+     <script src="assets/config.js"></script>
+        <script src="assets/guestdashboard.js"></script>
+<script src="assets/header.js"></script>
+</body>
+</html>

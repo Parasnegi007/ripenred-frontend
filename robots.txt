@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+
+# Disallow private/session pages
+Disallow: /cart.html
+Disallow: /checkout.html
+Disallow: /order-confirmation.html
+Disallow: /dashboard.html
+Disallow: /guest-dashboard.html
+Disallow: /login.html
+Disallow: /signup.html
+Disallow: /wishlist.html
+
+# Allow important pages
+Allow: /index.html
+Allow: /shop.html
+Allow: /products.html
+Allow: /apples.html
+Allow: /cherry.html
+Allow: /strawberry.html
+Allow: /about.html
+Allow: /contact.html
+Allow: /terms.html
+Allow: /policy.html
+Allow: /returns.html
+Allow: /shipping-policy.html
+
+# Sitemap location
+Sitemap: https://ripenred.com/sitemap.xml
+
+# Crawl delay (optional)
+Crawl-delay: 1

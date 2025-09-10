@@ -1,0 +1,783 @@
+/* ========== ABOUT PAGE SPECIFIC STYLES ========= */
+/* ========== MODERN OUR MISSION SECTION ========== */
+#our-mission {
+    padding: 60px 20px;
+    color: var(--text-light);
+    overflow: hidden;
+    position: relative;
+}
+
+#our-mission::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(1px);
+    z-index: 0;
+}
+
+#our-mission h2 {
+    font-size: 2.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+    color: var(--primary-red);
+    font-family: 'Secular One', sans-serif;
+    position: relative;
+    z-index: 1;
+}
+
+.mission-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 50px;
+    gap: 30px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease-in-out;
+    background: rgba(255,255,255,0.85);
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 8px 32px rgba(169,17,1,0.08);
+    backdrop-filter: blur(4px);
+    position: relative;
+    z-index: 1;
+}
+
+.mission-content.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.mission-content:nth-child(even) .image {
+    order: -1;
+}
+
+.mission-content .text {
+    flex: 1;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    text-align: justify;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-primary);
+}
+
+.mission-content .image {
+    flex: 1;
+    max-width: 30vw;
+    height: 50vh;
+    display: flex;
+    justify-content: center;
+    border-radius: 15px;
+    overflow: hidden;
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all 0.8s ease-in-out;
+}
+
+.mission-content .image.rotate-clockwise {
+    transform: translateX(-100px);
+}
+
+.mission-content .image.rotate-counterclockwise {
+    transform: translateX(100px);
+}
+
+.mission-content.visible .image.rotate-clockwise,
+.mission-content.visible .image.rotate-counterclockwise {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+.mission-content .image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    transition: transform 0.3s ease;
+}
+
+.mission-content .image img:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #our-mission {
+        padding: 30px 15px;
+    }
+    
+    #our-mission h2 {
+        font-size: 1.8rem;
+    }
+
+    .mission-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 20px;
+        gap: 20px;
+    }
+
+    .mission-content .text {
+        font-size: 1rem;
+    }
+
+    .mission-content .image {
+        max-width: 80vw;
+        height: 30vh;
+    }
+
+    .mission-content .image img {
+        border-radius: 10px;
+    }
+}
+
+
+/* Ensure body and html take full height */
+html, body {
+    height: auto;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+/* Make the main content section expand to push footer down */
+.container {
+    flex: 1;
+}
+
+/* ========== MODERN HIMALAYAN FRUITS SECTION ========== */
+#himalayan-fruits-section {
+    position: relative;
+    padding: 60px 0;
+    background: linear-gradient(300deg, #A91101 10%, #cb5710 90%);
+    overflow: hidden;
+    min-height: 450px;
+    box-shadow: 0 5px 36px rgba(169,17,1,0.15);
+}
+
+#himalayan-fruits-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('images/cover1 copy.webp');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.1;
+    z-index: 1;
+}
+
+#himalayan-fruits-section .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.1);
+    border-radius: 30px;
+    padding: 40px 50px;
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+}
+
+#himalayan-fruits-section .slogan {
+    flex: 1;
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 600;
+    font-family: 'Secular One', sans-serif;
+    opacity: 0;
+    transform: translateX(-60px);
+    animation: fade-slide-in-left 1.2s 0.2s forwards;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+#himalayan-fruits-section .slogan p {
+    font-size: 1.3rem;
+    font-weight: 400;
+    margin-top: 20px;
+    font-family: 'Poppins', sans-serif;
+    opacity: 0.95;
+    letter-spacing: 0.5px;
+    line-height: 1.5;
+}
+
+#himalayan-fruits-section .fruit-image {
+    flex: 1;
+    text-align: center;
+    opacity: 0;
+    transform: translateX(60px);
+    animation: fade-slide-in-right 1.2s 0.4s forwards;
+}
+
+#himalayan-fruits-section .fruit-image img {
+    width: 70%;
+    max-width: 400px;
+    filter: drop-shadow(0 8px 24px rgba(0,0,0,0.3));
+    transition: transform 0.3s ease;
+}
+
+#himalayan-fruits-section .fruit-image img:hover {
+    transform: scale(1.05);
+}
+
+@keyframes fade-slide-in-left {
+    from { opacity: 0; transform: translateX(-60px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-slide-in-right {
+    from { opacity: 0; transform: translateX(60px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 768px) {
+    #himalayan-fruits-section {
+        padding: 30px 15px;
+        min-height: 350px;
+    }
+
+    #himalayan-fruits-section .content {
+        flex-direction: column;
+        padding: 25px 20px;
+        gap: 25px;
+        border-radius: 20px;
+    }
+
+    #himalayan-fruits-section .slogan {
+        font-size: 1.4rem;
+        text-align: center;
+    }
+
+    #himalayan-fruits-section .slogan p {
+        font-size: 1.1rem;
+    }
+
+    #himalayan-fruits-section .fruit-image img {
+        width: 85%;
+    }
+}
+/* ========== MODERN WHY CHOOSE US SECTION ========== */
+#why-choose-us {
+    position: relative;
+    padding: 60px 20px;
+    overflow: hidden;
+}
+
+#why-choose-us::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(images/Untitled-2.webp);
+    background-repeat: repeat;
+    background-size: 50%;
+    background-position: top left;
+    opacity: 0.4;
+    z-index: 0;
+}
+
+.choose-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-weight: 600;
+    font-family: 'Secular One', sans-serif;
+    position: relative;
+    z-index: 1;
+}
+
+.choose-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    background: rgba(255,255,255,0.9);
+    border-radius: 25px;
+    padding: 40px;
+    box-shadow: 0 8px 32px rgba(169,17,1,0.1);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 1;
+}
+
+.choose-text {
+    flex: 1;
+    padding: 20px;
+    font-size: 1.1rem;
+    line-height: 1.7;
+    font-family: 'Poppins', sans-serif;
+}
+
+.choose-text h3 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    font-family: 'Secular One', sans-serif;
+    font-weight: 600;
+}
+
+.choose-text ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.choose-text li {
+    margin-bottom: 15px;
+    padding: 12px 18px;
+    background: linear-gradient(135deg, #A91101 0%, #cb1919 100%);
+    border-radius: 10px;
+    color: #ffffff;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(169,17,1,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.choose-text li:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(169,17,1,0.3);
+}
+
+.choose-container::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background: linear-gradient(180deg, transparent, #A91101, transparent);
+    border-radius: 1px;
+}
+
+.choose-images {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.image-scroll {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    padding: 10px;
+    scrollbar-width: none;
+}
+
+.image-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+.image-scroll img {
+    max-width: 40vw;
+    height: auto;
+    border-radius: 15px;
+    scroll-snap-align: center;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.image-scroll img:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Styling */
+@media (max-width: 768px) {
+    #why-choose-us {
+        padding: 30px 15px;
+    }
+    
+    .choose-heading {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    
+    .choose-container {
+        flex-direction: column;
+        padding: 25px 20px;
+        gap: 20px;
+    }
+    
+    .choose-text {
+        padding: 15px;
+    }
+    
+    .choose-text h3 {
+        font-size: 1.5rem;
+    }
+
+    .choose-container::before {
+        display: none;
+    }
+
+    .choose-images {
+        display: none;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .choose-container {
+        flex-direction: row;
+        padding: 30px 25px;
+    }
+
+    .choose-text {
+        flex: 1;
+    }
+
+    .choose-images {
+        flex: 1;
+    }
+
+    .choose-container::before {
+        display: block;
+    }
+}
+/* ========== MODERN OUR JOURNEY SECTION ========== */
+#our-journey {
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+#our-journey::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(1px);
+    z-index: 0;
+}
+
+.journey-heading {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-weight: 600;
+    font-family: 'Secular One', sans-serif;
+    position: relative;
+    z-index: 1;
+}
+
+.journey-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.journey-paragraph {
+    max-width: 1000px;
+    padding: 30px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(169,17,1,0.08);
+    backdrop-filter: blur(10px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid rgba(169,17,1,0.1);
+}
+
+.journey-paragraph p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    text-align: justify;
+    margin: 0;
+    font-weight: 400;
+    font-family: 'Poppins', sans-serif;
+}
+
+.journey-image {
+    max-width: 60%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease;
+}
+
+.journey-image:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    #our-journey {
+        padding: 30px 15px;
+    }
+
+    .journey-heading {
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+
+    .journey-content {
+        gap: 25px;
+    }
+
+    .journey-paragraph {
+        padding: 20px;
+        border-radius: 15px;
+    }
+
+    .journey-paragraph p {
+        font-size: 1rem;
+    }
+
+    .journey-image {
+        max-width: 90%;
+        border-radius: 10px;
+    }
+}
+/* ========== MODERN FARM GALLERY SECTION ========== */
+.farm-gallery {
+    text-align: center;
+    padding: 60px 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.farm-gallery::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(1px);
+    z-index: 0;
+}
+
+.farm-gallery h3 {
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+    font-weight: 600;
+    font-family: 'Secular One', sans-serif;
+    position: relative;
+    z-index: 1;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 25px;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.gallery img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 2px solid rgba(169,17,1,0.1);
+}
+
+.gallery img:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(169,17,1,0.2);
+    border-color: #A91101;
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.9);
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+}
+
+.modal-content-wrapper {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.modal-content {
+    max-width: 700px;
+    max-height: 700px;
+    border-radius: 15px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    object-fit: contain;
+}
+
+@media (max-width: 767px) {
+    .modal-content {
+        max-width: 350px;
+        max-height: 450px;
+        border-radius: 10px;
+    }
+}
+
+.close {
+    position: absolute;
+    top: -15px;
+    right: -15px;
+    background: linear-gradient(135deg, #A91101 0%, #cb1919 100%);
+    color: #fff;
+    font-size: 24px;
+    font-weight: bold;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(169,17,1,0.3);
+    transition: all 0.3s ease;
+    border: 2px solid rgba(255,255,255,0.2);
+}
+
+.close:hover {
+    transform: scale(1.15);
+    background: linear-gradient(135deg, #cb1919 0%, #A91101 100%);
+    box-shadow: 0 8px 25px rgba(169,17,1,0.4);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .farm-gallery {
+        padding: 30px 15px;
+    }
+    
+    .farm-gallery h3 {
+        font-size: 1.8rem;
+        margin-bottom: 25px;
+    }
+    
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+    
+    .gallery img {
+        height: 200px;
+    }
+
+    .modal-content-wrapper {
+        max-width: 85vw;
+        max-height: 85vh;
+    }
+    
+    .close {
+        font-size: 20px;
+        width: 30px;
+        height: 30px;
+        top: -10px;
+        right: -10px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .gallery {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    
+    .gallery img {
+        height: 250px;
+    }
+
+    .modal-content-wrapper {
+        max-width: 85vw;
+        max-height: 85vh;
+    }
+}
+.bold-head {
+    font-weight: 1000;
+}
+
+.bold-text {
+    font-weight: 500;
+}
+
+/* ========== MODERN SLOGAN END SECTION ========== */
+.slogan-end {
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.6;
+    text-align: center;
+    max-width: 90vw;
+    margin: 0 auto;
+    padding: 40px 20px;
+    border-top: 1px solid #A91101;
+    font-family: 'Secular One', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.slogan-end::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.1);
+    z-index: 0;
+}
+
+.slogan-end strong {
+    font-weight: bold;
+    color: #006837;
+    text-shadow: 0 2px 4px rgba(0,104,55,0.1);
+}
+
+/* Responsive Styling for Tablets */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .slogan-end {
+        padding: 40px 15px;
+        font-size: 1.8rem;
+        line-height: 1.5;
+    }
+}
+
+/* Responsive Styling for Mobiles */
+@media (max-width: 768px) {
+    .slogan-end {
+        padding: 30px 15px;
+        font-size: 1.4rem;
+        line-height: 1.4;
+    }
+}
