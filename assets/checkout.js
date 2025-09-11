@@ -1680,28 +1680,65 @@ class CheckoutManager {
     // Remove existing validation classes and messages
     field.classList.remove('valid', 'invalid');
     
-    const existingMessage = field.parentNode.querySelector('.validation-message');
+    // Try to find existing message in multiple possible locations
+    let existingMessage = field.parentNode.querySelector('.validation-message');
+    if (!existingMessage) {
+      existingMessage = field.parentNode.parentNode?.querySelector('.validation-message');
+    }
+    if (!existingMessage) {
+      existingMessage = document.querySelector(`#${field.id}-error`);
+    }
+    
     if (existingMessage) {
       existingMessage.remove();
     }
     
     if (isValid) {
       field.classList.add('valid');
+      console.log(`✅ Field ${field.id} is valid`);
     } else {
       field.classList.add('invalid');
       
       // Create and show error message
       const messageElement = document.createElement('div');
       messageElement.className = 'validation-message error';
+      messageElement.id = `${field.id}-error`;
       messageElement.textContent = message;
       messageElement.style.cssText = `
-        color: #dc3545;
-        font-size: 12px;
-        margin-top: 4px;
-        display: block;
+        color: #dc3545 !important;
+        font-size: 12px !important;
+        margin-top: 4px !important;
+        display: block !important;
+        font-weight: 500 !important;
+        line-height: 1.4 !important;
+        background-color: #f8d7da;
+        padding: 4px 8px;
+        border-radius: 4px;
+        border: 1px solid #f5c6cb;
       `;
       
-      field.parentNode.appendChild(messageElement);
+      // Try different insertion strategies
+      let insertionPoint = field.parentNode;
+      
+      // Check if parent has a specific class that indicates it's a form group
+      if (field.parentNode.classList.contains('form-group') || 
+          field.parentNode.classList.contains('input-group')) {
+        insertionPoint = field.parentNode;
+      } else if (field.parentNode.parentNode && 
+                (field.parentNode.parentNode.classList.contains('form-group') ||
+                 field.parentNode.parentNode.classList.contains('input-group'))) {
+        insertionPoint = field.parentNode.parentNode;
+      }
+      
+      // Insert after the field
+      if (field.nextSibling) {
+        insertionPoint.insertBefore(messageElement, field.nextSibling);
+      } else {
+        insertionPoint.appendChild(messageElement);
+      }
+      
+      console.log(`❌ Field ${field.id} validation failed: ${message}`);
+      console.log('📍 Error message inserted at:', insertionPoint.tagName, insertionPoint.className);
     }
   }
   
