@@ -746,11 +746,13 @@ button[type="submit"]:hover {
 /* Mobile Responsive */
 @media (max-width: 768px) {
     .availability-section {
-        max-width: 95vw;
+        min-width: 90vw;
         padding: 25px 20px;
         margin: 25px auto 20px;
     }
-    
+    .review-section{
+        min-width:90vw;
+    }
     .availability-header {
         gap: 12px;
         margin-bottom: 20px;

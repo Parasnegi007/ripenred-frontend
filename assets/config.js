@@ -9,7 +9,7 @@ window.API_CONFIG = null;
 // Load configuration from backend
 async function loadAPIConfig() {
     try {
-        const response = await fetch('/config/api-config');
+        const response = await fetch('/api/config/api-config');
         if (!response.ok) {
             throw new Error(`HTTP ${response.status}`);
         }
