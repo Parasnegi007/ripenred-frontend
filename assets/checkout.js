@@ -481,6 +481,9 @@ class CheckoutManager {
       zipcodeInput.addEventListener('blur', this.boundHandlers.handleLocationFetch);
     }
     
+    // Add real-time validation for all form fields
+    this.setupRealTimeValidation();
+    
     // Buttons
     const elements = [
       { id: 'saveAddress', handler: 'handleSaveAddress' },
@@ -911,8 +914,15 @@ class CheckoutManager {
     try {
       LoadingManager.show('save-address', 'Saving address...');
       
+      // Enhanced browser detection and logging
+      const browserInfo = this.getBrowserInfo();
+      console.log('🔍 Browser info for address saving:', browserInfo);
+      
       const addressData = this.collectAddressData();
-      await this.apiService.saveAddress(addressData);
+      console.log('🔍 Address data collected:', { ...addressData, phone: addressData.phone ? '***' : undefined });
+      
+      // Use enhanced saveAddress with browser-specific handling
+      const result = await this.saveAddressWithRetry(addressData, browserInfo);
       
       showNotification('Address saved successfully!', "success");
       await this.fetchSavedAddresses();
@@ -920,25 +930,82 @@ class CheckoutManager {
       LoadingManager.hide('save-address');
     } catch (error) {
       LoadingManager.hide('save-address');
-      ErrorTracker.track(error, { action: 'save-address' });
-      showNotification('Failed to save address. Please try again.', "error");
+      console.error('❌ Save address error details:', {
+        error: error.message,
+        stack: error.stack,
+        browser: this.getBrowserInfo(),
+        timestamp: new Date().toISOString()
+      });
+      
+      ErrorTracker.track(error, { 
+        action: 'save-address',
+        browser: this.getBrowserInfo(),
+        userAgent: navigator.userAgent
+      });
+      
+      // More specific error messages based on error type
+      let errorMessage = 'Failed to save address. Please try again.';
+      if (error.message.includes('network') || error.message.includes('fetch')) {
+        errorMessage = 'Network error. Please check your internet connection and try again.';
+      } else if (error.message.includes('timeout')) {
+        errorMessage = 'Request timed out. Please try again.';
+      } else if (error.message.includes('validation')) {
+        errorMessage = error.message; // Show validation errors as-is
+      }
+      
+      showNotification(errorMessage, "error");
     }
   }
   
   collectAddressData() {
-    const zipcode = document.getElementById('zipcode')?.value.trim();
+    const validationErrors = [];
     
-    if (zipcode && !Utils.validatePincode(zipcode)) {
-      throw new Error('Sorry, we currently deliver only in Delhi.');
-    }
-    
+    // Get all form values
     const street = document.getElementById('street')?.value.trim();
     const city = document.getElementById('city')?.value.trim();
     const state = document.getElementById('state')?.value.trim();
+    const zipcode = document.getElementById('zipcode')?.value.trim();
     const country = document.getElementById('country')?.value.trim();
     
-    if (!street || !city || !state || !zipcode || !country) {
-      throw new Error('Please fill in all required fields.');
+    // Validate address fields according to backend validation rules
+    if (!street) {
+      validationErrors.push('Street address is required');
+    } else if (street.length < 5 || street.length > 100) {
+      validationErrors.push('Street address must be between 5 and 100 characters');
+    }
+    
+    if (!city) {
+      validationErrors.push('City is required');
+    } else if (city.length < 2 || city.length > 50) {
+      validationErrors.push('City must be between 2 and 50 characters');
+    } else if (!/^[a-zA-Z\s]+$/.test(city)) {
+      validationErrors.push('City can only contain letters and spaces');
+    }
+    
+    if (!state) {
+      validationErrors.push('State is required');
+    } else if (state.length < 2 || state.length > 50) {
+      validationErrors.push('State must be between 2 and 50 characters');
+    } else if (!/^[a-zA-Z\s]+$/.test(state)) {
+      validationErrors.push('State can only contain letters and spaces');
+    }
+    
+    if (!zipcode) {
+      validationErrors.push('Zipcode is required');
+    } else if (zipcode.length < 5 || zipcode.length > 10) {
+      validationErrors.push('Zipcode must be between 5 and 10 characters');
+    } else if (!/^[0-9\-\s]+$/.test(zipcode)) {
+      validationErrors.push('Zipcode can only contain numbers, hyphens, and spaces');
+    } else if (!Utils.validatePincode(zipcode)) {
+      validationErrors.push('Sorry, we currently deliver only in Delhi');
+    }
+    
+    if (!country) {
+      validationErrors.push('Country is required');
+    } else if (country.length < 2 || country.length > 50) {
+      validationErrors.push('Country must be between 2 and 50 characters');
+    } else if (!/^[a-zA-Z\s]+$/.test(country)) {
+      validationErrors.push('Country can only contain letters and spaces');
     }
     
     // Get coordinates from map
@@ -952,30 +1019,53 @@ class CheckoutManager {
       country
     };
     
-    // Only add coordinates if they are valid numbers
+    // Validate coordinates if provided
     if (coordinates.latitude !== null && coordinates.longitude !== null) {
-      addressData.latitude = coordinates.latitude;
-      addressData.longitude = coordinates.longitude;
+      if (coordinates.latitude < -90 || coordinates.latitude > 90) {
+        validationErrors.push('Latitude must be between -90 and 90');
+      }
+      if (coordinates.longitude < -180 || coordinates.longitude > 180) {
+        validationErrors.push('Longitude must be between -180 and 180');
+      }
+      
+      if (validationErrors.length === 0) {
+        addressData.latitude = coordinates.latitude;
+        addressData.longitude = coordinates.longitude;
+      }
     }
     
+    // Validate guest user info if not logged in
     if (!Utils.isLoggedIn()) {
       const name = document.getElementById('name')?.value.trim();
       const email = document.getElementById('email')?.value.trim();
       const phone = document.getElementById('phone')?.value.trim();
       
-      if (!name || !email || !phone) {
-        throw new Error('Please enter your Name, Email, and Phone.');
+      if (!name) {
+        validationErrors.push('Name is required for guest checkout');
+      } else if (name.length < 2 || name.length > 50) {
+        validationErrors.push('Name must be between 2 and 50 characters');
       }
       
-      if (!SecurityUtils.validateEmail(email)) {
-        throw new Error('Please enter a valid email address.');
+      if (!email) {
+        validationErrors.push('Email is required for guest checkout');
+      } else if (!SecurityUtils.validateEmail(email)) {
+        validationErrors.push('Please enter a valid email address');
       }
       
-      if (!SecurityUtils.validatePhone(phone)) {
-        throw new Error('Please enter a valid 10-digit phone number.');
+      if (!phone) {
+        validationErrors.push('Phone number is required for guest checkout');
+      } else if (!SecurityUtils.validatePhone(phone)) {
+        validationErrors.push('Phone number must be exactly 10 digits');
       }
       
-      addressData = { name, email, phone, ...addressData };
+      if (validationErrors.length === 0) {
+        addressData = { name, email, phone, ...addressData };
+      }
+    }
+    
+    // Throw error with all validation messages if any exist
+    if (validationErrors.length > 0) {
+      throw new Error(validationErrors.join('. '));
     }
     
     return addressData;
@@ -1349,59 +1439,107 @@ class CheckoutManager {
   
   async buildOrderData() {
     const { cartItems, discountAmount } = this.appState.getState();
+    const validationErrors = [];
     
-    if (cartItems.length === 0) {
-      throw new Error('Your cart is empty.');
+    console.log('🔍 Building order data with validation...');
+    
+    // Validate cart items
+    if (!cartItems || cartItems.length === 0) {
+      validationErrors.push('Cart must contain at least one item');
+    } else {
+      cartItems.forEach((item, index) => {
+        if (!item.productId) {
+          validationErrors.push(`Cart item ${index + 1}: Product ID is required`);
+        } else if (!/^[a-f\d]{24}$/i.test(item.productId)) {
+          validationErrors.push(`Cart item ${index + 1}: Invalid product ID format`);
+        }
+        
+        if (!item.quantity || item.quantity < 1 || item.quantity > 99) {
+          validationErrors.push(`Cart item ${index + 1}: Quantity must be between 1 and 99`);
+        }
+      });
     }
     
-    // Get address
-    const shippingAddress = await this.getSelectedAddress();
+    // Get and validate address
+    let shippingAddress;
+    try {
+      shippingAddress = await this.getSelectedAddress();
+      console.log('✅ Address validation passed');
+    } catch (error) {
+      validationErrors.push(`Address validation: ${error.message}`);
+    }
     
-    // Get user info for guest users only
+    // Get and validate user info for guest users
     let userInfo = undefined;
     if (!Utils.isLoggedIn()) {
       try {
         userInfo = this.getUserInfo();
+        console.log('✅ Guest user info validation passed');
       } catch (error) {
-        throw new Error('Please fill in all required guest information (name, email, phone).');
+        validationErrors.push(`Guest info validation: ${error.message}`);
       }
     }
     
-    // Get payment method
+    // Validate payment method
     const selectedPaymentMethod = document.querySelector('input[name="payment-method"]:checked');
     if (!selectedPaymentMethod) {
-      throw new Error('Please select a payment method.');
+      validationErrors.push('Payment method is required');
     }
     
-    // Calculate totals
+    // Validate total price
     let totalPrice = 0;
-    cartItems.forEach(item => {
-      totalPrice += item.price * item.quantity;
-    });
+    if (cartItems && cartItems.length > 0) {
+      cartItems.forEach(item => {
+        const itemPrice = parseFloat(item.price) || 0;
+        const itemQuantity = parseInt(item.quantity) || 0;
+        totalPrice += itemPrice * itemQuantity;
+      });
+    }
+    
+    if (totalPrice <= 0) {
+      validationErrors.push('Total price must be a positive number');
+    }
+    
+    // Throw all validation errors at once
+    if (validationErrors.length > 0) {
+      const errorMessage = 'Order validation failed: ' + validationErrors.join('. ');
+      console.error('❌ Order validation errors:', validationErrors);
+      throw new Error(errorMessage);
+    }
     
     const shippingCharges = Utils.calculateShipping(totalPrice);
-    const finalTotal = totalPrice - discountAmount + shippingCharges;
+    const finalTotal = totalPrice - (discountAmount || 0) + shippingCharges;
     
     const couponInput = document.getElementById('couponInput');
     const { couponApplied } = this.appState.getState();
     const appliedCoupons = couponApplied && couponInput ? [couponInput.value.trim()] : [];
     
-    return {
+    const orderData = {
       cartItems: cartItems.map(item => ({
         productId: item.productId,
-        quantity: item.quantity,
-        price: item.price || 0,
+        quantity: parseInt(item.quantity),
+        price: parseFloat(item.price) || 0,
       })),
       shippingAddress,
       paymentMethod: selectedPaymentMethod.value,
       userInfo: userInfo, // Will be undefined for logged-in users
       userId: Utils.isLoggedIn() ? localStorage.getItem('userId') : undefined,
       totalPrice,
-      discountAmount,
+      discountAmount: discountAmount || 0,
       shippingCharges,
       appliedCoupons,
       finalTotal,
     };
+    
+    console.log('✅ Order data built successfully:', {
+      cartItems: orderData.cartItems.length,
+      hasAddress: !!orderData.shippingAddress,
+      paymentMethod: orderData.paymentMethod,
+      totalPrice: orderData.totalPrice,
+      finalTotal: orderData.finalTotal
+    });
+    
+    return orderData;
   }
   
   async getSelectedAddress() {
@@ -1496,6 +1634,171 @@ class CheckoutManager {
         }
       });
     });
+  }
+  
+  // 🔧 Setup real-time validation for form fields
+  setupRealTimeValidation() {
+    const formFields = [
+      { id: 'name', validator: this.validateName.bind(this) },
+      { id: 'email', validator: this.validateEmail.bind(this) },
+      { id: 'phone', validator: this.validatePhone.bind(this) },
+      { id: 'street', validator: this.validateStreet.bind(this) },
+      { id: 'city', validator: this.validateCity.bind(this) },
+      { id: 'state', validator: this.validateState.bind(this) },
+      { id: 'zipcode', validator: this.validateZipcode.bind(this) },
+      { id: 'country', validator: this.validateCountry.bind(this) }
+    ];
+    
+    formFields.forEach(({ id, validator }) => {
+      const field = document.getElementById(id);
+      if (field) {
+        // Add validation on blur (when user leaves the field)
+        field.addEventListener('blur', () => {
+          this.validateField(field, validator);
+        });
+        
+        // Add validation on input for instant feedback (with debouncing)
+        field.addEventListener('input', Utils.debounce(() => {
+          this.validateField(field, validator);
+        }, 500));
+      }
+    });
+  }
+  
+  // 🔧 Validate individual field and show feedback
+  validateField(field, validator) {
+    try {
+      const result = validator(field.value.trim());
+      this.showFieldValidation(field, result.isValid, result.message);
+    } catch (error) {
+      this.showFieldValidation(field, false, error.message);
+    }
+  }
+  
+  // 🔧 Show field validation feedback
+  showFieldValidation(field, isValid, message) {
+    // Remove existing validation classes and messages
+    field.classList.remove('valid', 'invalid');
+    
+    const existingMessage = field.parentNode.querySelector('.validation-message');
+    if (existingMessage) {
+      existingMessage.remove();
+    }
+    
+    if (isValid) {
+      field.classList.add('valid');
+    } else {
+      field.classList.add('invalid');
+      
+      // Create and show error message
+      const messageElement = document.createElement('div');
+      messageElement.className = 'validation-message error';
+      messageElement.textContent = message;
+      messageElement.style.cssText = `
+        color: #dc3545;
+        font-size: 12px;
+        margin-top: 4px;
+        display: block;
+      `;
+      
+      field.parentNode.appendChild(messageElement);
+    }
+  }
+  
+  // 🔧 Individual field validators
+  validateName(value) {
+    if (!value) {
+      return { isValid: false, message: 'Name is required' };
+    }
+    if (value.length < 2 || value.length > 50) {
+      return { isValid: false, message: 'Name must be between 2 and 50 characters' };
+    }
+    return { isValid: true, message: '' };
+  }
+  
+  validateEmail(value) {
+    if (!value) {
+      return { isValid: false, message: 'Email is required' };
+    }
+    if (!SecurityUtils.validateEmail(value)) {
+      return { isValid: false, message: 'Please enter a valid email address' };
+    }
+    return { isValid: true, message: '' };
+  }
+  
+  validatePhone(value) {
+    if (!value) {
+      return { isValid: false, message: 'Phone number is required' };
+    }
+    if (!SecurityUtils.validatePhone(value)) {
+      return { isValid: false, message: 'Phone number must be exactly 10 digits' };
+    }
+    return { isValid: true, message: '' };
+  }
+  
+  validateStreet(value) {
+    if (!value) {
+      return { isValid: false, message: 'Street address is required' };
+    }
+    if (value.length < 5 || value.length > 100) {
+      return { isValid: false, message: 'Street address must be between 5 and 100 characters' };
+    }
+    return { isValid: true, message: '' };
+  }
+  
+  validateCity(value) {
+    if (!value) {
+      return { isValid: false, message: 'City is required' };
+    }
+    if (value.length < 2 || value.length > 50) {
+      return { isValid: false, message: 'City must be between 2 and 50 characters' };
+    }
+    if (!/^[a-zA-Z\s]+$/.test(value)) {
+      return { isValid: false, message: 'City can only contain letters and spaces' };
+    }
+    return { isValid: true, message: '' };
+  }
+  
+  validateState(value) {
+    if (!value) {
+      return { isValid: false, message: 'State is required' };
+    }
+    if (value.length < 2 || value.length > 50) {
+      return { isValid: false, message: 'State must be between 2 and 50 characters' };
+    }
+    if (!/^[a-zA-Z\s]+$/.test(value)) {
+      return { isValid: false, message: 'State can only contain letters and spaces' };
+    }
+    return { isValid: true, message: '' };
+  }
+  
+  validateZipcode(value) {
+    if (!value) {
+      return { isValid: false, message: 'Zipcode is required' };
+    }
+    if (value.length < 5 || value.length > 10) {
+      return { isValid: false, message: 'Zipcode must be between 5 and 10 characters' };
+    }
+    if (!/^[0-9\-\s]+$/.test(value)) {
+      return { isValid: false, message: 'Zipcode can only contain numbers, hyphens, and spaces' };
+    }
+    if (!Utils.validatePincode(value)) {
+      return { isValid: false, message: 'Sorry, we currently deliver only in Delhi' };
+    }
+    return { isValid: true, message: '' };
+  }
+  
+  validateCountry(value) {
+    if (!value) {
+      return { isValid: false, message: 'Country is required' };
+    }
+    if (value.length < 2 || value.length > 50) {
+      return { isValid: false, message: 'Country must be between 2 and 50 characters' };
+    }
+    if (!/^[a-zA-Z\s]+$/.test(value)) {
+      return { isValid: false, message: 'Country can only contain letters and spaces' };
+    }
+    return { isValid: true, message: '' };
   }
   
   showError(message) {
@@ -1738,6 +2041,189 @@ class CheckoutManager {
       },
       { enableHighAccuracy: true, timeout: 10000, maximumAge: 0 }
     );
+  }
+  
+  // 🔧 Enhanced browser detection
+  getBrowserInfo() {
+    const ua = navigator.userAgent;
+    const browserInfo = {
+      userAgent: ua,
+      isChrome: /Chrome/.test(ua) && /Google Inc/.test(navigator.vendor),
+      isFirefox: /Firefox/.test(ua),
+      isSafari: /Safari/.test(ua) && /Apple Computer/.test(navigator.vendor),
+      isEdge: /Edg/.test(ua),
+      isIE: /Trident/.test(ua) || /MSIE/.test(ua),
+      isOpera: /Opera/.test(ua) || /OPR/.test(ua),
+      isMobile: /Mobile|Android|iPhone|iPad/.test(ua),
+      supportsModernJS: typeof Promise !== 'undefined' && typeof fetch !== 'undefined',
+      supportsCrypto: typeof crypto !== 'undefined' && typeof crypto.getRandomValues !== 'undefined'
+    };
+    
+    // Detect Chrome version for Chrome-specific issues
+    const chromeMatch = ua.match(/Chrome\/(\d+)/);
+    if (chromeMatch) {
+      browserInfo.chromeVersion = parseInt(chromeMatch[1]);
+    }
+    
+    // Detect Safari version
+    const safariMatch = ua.match(/Version\/(\d+)/);
+    if (safariMatch && browserInfo.isSafari) {
+      browserInfo.safariVersion = parseInt(safariMatch[1]);
+    }
+    
+    // Detect Firefox version
+    const firefoxMatch = ua.match(/Firefox\/(\d+)/);
+    if (firefoxMatch) {
+      browserInfo.firefoxVersion = parseInt(firefoxMatch[1]);
+    }
+    
+    return browserInfo;
+  }
+  
+  // 🔧 Enhanced address saving with retry logic and browser-specific handling
+  async saveAddressWithRetry(addressData, browserInfo, retryCount = 0) {
+    const maxRetries = 3;
+    const baseDelay = 1000;
+    
+    try {
+      console.log(`🔄 Saving address attempt ${retryCount + 1}/${maxRetries + 1}`);
+      
+      // Browser-specific modifications
+      const modifiedData = this.applyBrowserSpecificFixes(addressData, browserInfo);
+      
+      // Use different request strategies based on browser
+      let result;
+      if (browserInfo.isIE || (!browserInfo.supportsModernJS)) {
+        result = await this.saveAddressLegacy(modifiedData);
+      } else {
+        result = await this.apiService.saveAddress(modifiedData);
+      }
+      
+      console.log('✅ Address saved successfully:', result);
+      return result;
+      
+    } catch (error) {
+      console.error(`❌ Save address attempt ${retryCount + 1} failed:`, error);
+      
+      // Retry logic for network errors only
+      if (retryCount < maxRetries && this.shouldRetryAddressSave(error, browserInfo)) {
+        const delay = baseDelay * Math.pow(2, retryCount);
+        console.log(`⏳ Retrying in ${delay}ms...`);
+        
+        await Utils.sleep(delay);
+        return this.saveAddressWithRetry(addressData, browserInfo, retryCount + 1);
+      }
+      
+      // Add browser info to error
+      error.browserInfo = browserInfo;
+      throw error;
+    }
+  }
+  
+  // 🔧 Apply browser-specific fixes to address data
+  applyBrowserSpecificFixes(addressData, browserInfo) {
+    const modifiedData = { ...addressData };
+    
+    // Fix for Safari sometimes sending undefined as string
+    if (browserInfo.isSafari) {
+      Object.keys(modifiedData).forEach(key => {
+        if (modifiedData[key] === 'undefined' || modifiedData[key] === undefined) {
+          modifiedData[key] = '';
+        }
+      });
+    }
+    
+    // Fix for older Chrome versions with coordinate precision issues
+    if (browserInfo.isChrome && browserInfo.chromeVersion < 90) {
+      if (modifiedData.latitude) {
+        modifiedData.latitude = parseFloat(modifiedData.latitude.toFixed(6));
+      }
+      if (modifiedData.longitude) {
+        modifiedData.longitude = parseFloat(modifiedData.longitude.toFixed(6));
+      }
+    }
+    
+    // Fix for Firefox form encoding issues
+    if (browserInfo.isFirefox) {
+      Object.keys(modifiedData).forEach(key => {
+        if (typeof modifiedData[key] === 'string') {
+          modifiedData[key] = modifiedData[key].trim();
+        }
+      });
+    }
+    
+    return modifiedData;
+  }
+  
+  // 🔧 Legacy address saving for older browsers
+  async saveAddressLegacy(addressData) {
+    const endpoint = Utils.isLoggedIn() ? '/users/addAddress' : '/users/guest/addAddress';
+    
+    return new Promise((resolve, reject) => {
+      const xhr = new XMLHttpRequest();
+      xhr.open('POST', `${CONFIG.API_BASE_URL}${endpoint}`, true);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      
+      const token = Utils.getToken();
+      if (token) {
+        xhr.setRequestHeader('Authorization', `Bearer ${token}`);
+      }
+      
+      xhr.timeout = CONFIG.REQUEST_TIMEOUT;
+      
+      xhr.onload = function() {
+        if (xhr.status >= 200 && xhr.status < 300) {
+          try {
+            const response = JSON.parse(xhr.responseText);
+            resolve(response);
+          } catch (e) {
+            reject(new Error('Invalid JSON response'));
+          }
+        } else {
+          reject(new Error(`HTTP ${xhr.status}: ${xhr.statusText}`));
+        }
+      };
+      
+      xhr.onerror = function() {
+        reject(new Error('Network error occurred'));
+      };
+      
+      xhr.ontimeout = function() {
+        reject(new Error('Request timed out'));
+      };
+      
+      xhr.send(JSON.stringify(addressData));
+    });
+  }
+  
+  // 🔧 Determine if address save should be retried
+  shouldRetryAddressSave(error, browserInfo) {
+    // Don't retry validation errors
+    if (error.message.includes('required') || 
+        error.message.includes('invalid') || 
+        error.message.includes('validation')) {
+      return false;
+    }
+    
+    // Retry network errors
+    if (error.message.includes('network') || 
+        error.message.includes('fetch') ||
+        error.message.includes('timeout') ||
+        error.name === 'TypeError' ||
+        error.name === 'AbortError') {
+      return true;
+    }
+    
+    // Browser-specific retry logic
+    if (browserInfo.isSafari && error.message.includes('TypeError')) {
+      return true;
+    }
+    
+    if (browserInfo.isFirefox && error.message.includes('NS_ERROR')) {
+      return true;
+    }
+    
+    return false;
   }
 
 /**
@@ -2091,7 +2577,7 @@ let checkoutManager;
 
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    // Add CSS animations
+    // Add CSS animations and validation styles
     const style = document.createElement('style');
     style.textContent = `
       @keyframes spin {
@@ -2104,6 +2590,77 @@ document.addEventListener('DOMContentLoaded', async () => {
       @keyframes fadeIn {
         from { opacity: 0; }
         to { opacity: 1; }
+      }
+      
+      /* 📝 Validation styles */
+      .form-field {
+        position: relative;
+        margin-bottom: 20px;
+      }
+      
+      input.valid {
+        border-color: #28a745 !important;
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+      }
+      
+      input.invalid {
+        border-color: #dc3545 !important;
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+      }
+      
+      select.valid {
+        border-color: #28a745 !important;
+        box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+      }
+      
+      select.invalid {
+        border-color: #dc3545 !important;
+        box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+      }
+      
+      .validation-message {
+        font-size: 12px;
+        margin-top: 4px;
+        display: block;
+        font-weight: 500;
+      }
+      
+      .validation-message.error {
+        color: #dc3545;
+      }
+      
+      .validation-message.success {
+        color: #28a745;
+      }
+      
+      /* 📦 Enhanced form styling */
+      .form-group {
+        position: relative;
+        margin-bottom: 1.5rem;
+      }
+      
+      .form-group label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+        display: block;
+      }
+      
+      .form-group input,
+      .form-group select {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #ddd;
+        border-radius: 8px;
+        font-size: 14px;
+        transition: all 0.3s ease;
+      }
+      
+      .form-group input:focus,
+      .form-group select:focus {
+        outline: none;
+        border-color: #007bff;
+        box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
       }
     `;
     document.head.appendChild(style);
