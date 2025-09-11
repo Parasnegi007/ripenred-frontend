@@ -1347,7 +1347,7 @@ body.menu-open .menu-toggle {
     justify-content: center;
     background: linear-gradient(135deg, 
         rgba(255, 255, 255, 0.829) 0%, 
-        rgba(233, 219, 17, 0.438) 100%);
+       #a912017b 100%);
     border-bottom: 1px solid rgba(169, 17, 1, 0.1);
     margin-bottom: var(--space-lg);
 }

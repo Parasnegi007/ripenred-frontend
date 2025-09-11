@@ -223,17 +223,13 @@ body {
 
 .checkout-form h2 {
   font-family: 'Secular One', Arial, sans-serif;
-  font-size: 29px;
-
   margin-bottom: 18px;
-  font-weight: 700;
 }
 
 #checkoutForm label {
   display: block;
   font-size: 1rem;
   font-weight: 600;
-
   margin-bottom: 6px;
   margin-top: 20px;
 }
@@ -324,7 +320,6 @@ body {
   font-family: 'Secular One', Arial, sans-serif;
   border-bottom: 1.5px solid #e9da11;
   margin-bottom: 13px;
-  font-size: 25px;
   padding-bottom: 8px;
 }
 .cart-item {
@@ -753,7 +748,9 @@ body {
     .checkout-container {
     flex-direction: column;
   }
-
+.checkout-form h2 {
+  font-size: 1rem;
+}
   .order-summary {
     order: -1; /* Moves Order Summary above form */
   }

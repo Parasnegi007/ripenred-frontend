@@ -219,7 +219,7 @@ if (tags) {
 
   // Rich Text
   const desc = document.getElementById("product-description");
-  if (desc) desc.innerHTML = Sanitizer.sanitize((p.description||"").slice(0,340)) ;
+  if (desc) desc.innerHTML = Sanitizer.sanitize((p.description||"").slice(0,260)) ;
   const full = document.getElementById("full-description");
   if (full) full.innerHTML = Sanitizer.sanitize(p.description);
   // Price
@@ -360,13 +360,13 @@ function renderReviewsSection({ reviews, avgRating = 0, reviewCount = 0 }) {
   
   const reviewsSection = document.createElement('section');
   reviewsSection.id = 'reviews-section';
-  reviewsSection.style.cssText = 'margin:48px auto;padding:0 16px;border:1px solid #e5e7eb;border-radius:12px;background:#fafafa;';
+  reviewsSection.style.cssText = 'max-width:75vw;margin:2px auto;padding:0 16px;border:1px solid #e5e7eb;border-radius:12px;background:#fafafa;';
   
   const safeAvg = Number(avgRating || 0);
   const safeCount = Number(reviewCount || (reviews ? reviews.length : 0));
   
   const reviewsHtml = `
-    <div style="max-width:95%;margin:0 auto;">
+    <div style="max-width:75%;margin:15px auto;">
       <div style="display:flex;gap:24px;align-items:center;margin-bottom:20px;">
         <div style="display:flex;align-items:center;gap:14px;">
           <div style="font-size:36px;font-weight:700;color:#111827;">${safeAvg.toFixed(1)}</div>
@@ -385,9 +385,7 @@ function renderReviewsSection({ reviews, avgRating = 0, reviewCount = 0 }) {
         </div>
         <div class=\"carousel-container\" style=\"position:relative;margin:16px 0;\">
 <button class="carousel-arrow prev" 
-    style="    padding-bottom: 0.2em;position:absolute; left:0px; top:45%; transform:translateY(-50%); z-index:10; background:#111827;border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.1); color:white;">
-    «
-</button>
+    style=" position:absolute; left:0px; top:45%;  z-index:10; background:#111827;border-radius:50%; display:flex; align-items:center;border:none; justify-content:center; cursor:pointer; color:white;">«</button>
 
           <div class=\"carousel-wrapper\" style=\"overflow:hidden;\">
             <div id=\"reviews-list\" class=\"carousel-track\" style=\"display:flex;transition:transform 0.3s ease;\">
@@ -408,9 +406,7 @@ function renderReviewsSection({ reviews, avgRating = 0, reviewCount = 0 }) {
             </div>
           </div>
 <button class="carousel-arrow next" 
-    style="    padding-bottom: 0.2em;position:absolute; right:0px; top:45%; transform:translateY(-50%); z-index:10; background:#111827; border-radius:50%; width:40px; height:40px; display:flex; align-items:center; justify-content:center; cursor:pointer; box-shadow:0 2px 6px rgba(0,0,0,0.1); color:white;">
-    »
-</button>
+    style="position:absolute; right:0px; top:45%; z-index:10; background:#111827; border-radius:50%;display:flex; align-items:center; justify-content:center; cursor:pointer;border:none; color:white;">»</button>
 
           <div class=\"carousel-indicators\" style=\"display:flex;justify-content:center;gap:8px;margin:10px auto;\">
             ${reviews.map((_, index) => `

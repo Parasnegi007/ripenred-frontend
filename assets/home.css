@@ -642,28 +642,267 @@ font-family: 'Playfair Display', serif;
   }
 
   .promo-heading {
-    font-size: 2rem;
+    font-size: 1.4rem;
   }
 
   .promo-text {
-    font-size: 1.05rem;
+    font-size: .85rem;
   }
 
   .promo-button {
     width: 100%;
-    font-size: 1rem;
+    font-size: .8rem;
   }
 
   .promo-code {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .promo-img {
     width: 100%;
-    max-width: 320px;
+    max-width: 200px;
   }
 }
 
+  /* Neon gradient glass banner */
+  .countdown-banner {
+    background: linear-gradient(120deg, #78ffa5 0%, #b97bfc 100%);
+    color: #fff;
+    padding: 3rem 2.5rem 2.5rem;
+    border-radius: 30px 30px 0 0 ;
+    margin: 40px auto 0;
+    max-width: 900px;
+    box-shadow: 0 8px 36px 0 rgba(47,63,255,0.09), 0 2px 12px 0 rgba(162,89,239,0.14);
+    position: relative;
+    overflow: visible;
+  }
+  
+  /* Countdown sale wrapper animation */
+  .countdown-sale-wrapper {
+    /* Scroll-based animation styles */
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  @keyframes bannerEntrance {
+    from { opacity: 0; transform: scale(.93) translateY(30px);}
+    to   { opacity: 1; transform: scale(1) translateY(0);}
+  }
+  /* Header styles */
+  .countdown-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+  
+  .sale-icon {
+    font-size: 2.8rem;
+    color: #ffe632;
+    filter: drop-shadow(0 0 8px #ffe632cc);
+    animation: iconElectric 2s infinite cubic-bezier(0.5,0,1,1.2);
+  }
+  @keyframes iconElectric {
+    0%,100% { transform: scale(1) rotate(-8deg);}
+    10% { transform: scale(1.14) rotate(7deg);}
+    60% { transform: scale(.97) rotate(-8deg);}
+  }
+  
+  .sale-badge {
+    background: linear-gradient(90deg, #0bc2e6 0%, #9d3cff 100%);
+    box-shadow: 0 4px 22px 0 #925ae94d;
+    font-weight: 800;
+    color: #fff;
+    border-radius: 22px;
+    padding: 0.5rem 1.3rem;
+    font-size: 1.07rem;
+    margin-left: 0.8rem;
+    letter-spacing: .13em;
+    animation: badgeGlow 2s infinite alternate;
+  }
+  @keyframes badgeGlow {
+    50% { box-shadow: 0 0 16px 5px #FFFF67, 0 2px 22px 0 #27e9fb77;}
+  }
+  
+  /* Countdown glass timer */
+  .professional-timer {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+    margin: 1.3rem auto 1.1rem;
+  }
+  
+  .time-unit {
+    box-shadow: 0 4px 28px #2528ff12;
+    background: rgba(255,255,255,0.23);
+    border: 1.3px solid #fff5;
+    border-radius: 18px;
+    padding: 1.2rem 1.9rem;
+    min-width: 81px;
+    text-align: center;
+    backdrop-filter: blur(12px) saturate(160%);
+    transition: box-shadow .2s, background .2s;
+    animation: timerPop 1.5s infinite alternate;
+  }
+  @keyframes timerPop {
+    0% { box-shadow: 0 4px 16px #7256e94d; }
+    100% { box-shadow: 0 0px 30px #08e7fd77; }
+  }
+  
+  .label {
+    font-size: .87rem;
+    color: #dee0fd;
+    letter-spacing: .11em;
+    font-weight: 600;
+    margin-bottom: 6px;
+  }
+  
+  .time {
+    font-size: 2.45rem;
+    font-family: 'Share Tech Mono', 'Consolas', monospace;
+    font-weight: 800;
+    letter-spacing: .1em;
+    color: #fff;
+    text-shadow: 0 2px 12px #6d72fa66;
+    animation: countdownFlash .8s alternate infinite;
+  }
+  @keyframes countdownFlash {
+    0% { color: #fff;}
+    100% {color: #a9e6ff;}
+  }
+  
+  .sale-subtext {
+    color: #ecfcff;
+    font-size: 1.14rem;
+    margin-top: 20px;
+    filter: drop-shadow(0 2px 7px #08e7fd22);
+  }
+  
+  /* Sale product container */
+  .sale-container {
+    background: #fff;
+    max-width: 900px;
+    border-radius: 0 0 18px 18px;
+    padding: 32px 38px 28px;
+    margin: 0 auto 38px;
+    box-shadow: 0 2px 18px 0 rgba(47,63,255,0.08);
+  }
+  
+  .sale-header {
+    display: flex;
+    align-items: center;
+    gap: 1.05rem;
+    font-weight: 800;
+    font-size: 1.55rem;
+    margin-bottom: 15px;
+    font-family: 'secular one';
+  }
+  
+  .sale-header .accent {
+    color: #fb2727;
+    font-size: 2rem;
+    filter: drop-shadow(0 0 10px #27e9fb44);
+    animation: accentGrow 2s infinite alternate-reverse;
+  }
+  @keyframes accentGrow {
+    to { transform: scale(1.19);}
+  }
+  
+  .sale-timer-info {
+    font-size: .98rem;
+    color: #7266a9;
+    margin-left: auto;
+    font-weight: 500;
+  }
+  
+  /* Horizontal glowing scrollbar */
+  .scroll-container {
+    overflow-x: auto;
+    padding-bottom: 10px;
+  }
+  .scroll-container::-webkit-scrollbar {
+    height: 10px;
+  }
+  .scroll-container::-webkit-scrollbar-thumb {
+    background: linear-gradient(90deg, #27e9fb, #8e5dff);
+    border-radius: 30px;
+  }
+  .scroll-container::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Sample product card placeholder styling */
+  .productlist {
+    display: flex;
+    gap: 28px;
+    padding: 1rem 0;
+    min-height: 170px;
+    scroll-behavior: smooth;
+    anchor-name: --scroll-button;
+  }
+  .productlist::scroll-button(right) , .productlist::scroll-button(left){
+    content:'»';
+    border: none;
+    color: white;
+    background-color: #a912017d;
+    font-size: 1.2rem;
+    height: 40px;
+    width: 40px;
+    padding-bottom: 0.3em;
+    border-radius: 50%;
+    cursor:pointer;
+  position: absolute;
+  anchor-name: --scroll-button;
+ top: 40%;
+ left:95%;
+  transition: ease-in-out 0.3s;
+  
+  }
+  .productlist::scroll-button(left){
+    content: '«';
+    position-area:right center;
+    left: 0%;
+  }
+  .productlist::scroll-button(right):hover , .productlist::scroll-button(left):hover{
+    background-color: #A91101;
+  }
+  .productlist::scroll-button(right):disabled , .productlist::scroll-button(left):disabled{
+    background-color: #a912012b;
+  }
+
+  .productlist .product-card {
+    background: linear-gradient(120deg, #fff 70%, #f4eaff 100%);
+    border-radius: 16px;
+    box-shadow: 0 2px 18px 0 rgba(47,63,255,0.11);
+    padding: 1rem 1.2rem;
+    min-width: 185px;
+    min-height: 130px;
+    transition: transform 0.22s cubic-bezier(.61,-0.08,.44,1.14), box-shadow 0.18s;
+    cursor: pointer;
+    border: 1.5px solid #dfe9fb;
+    position: relative;
+    animation: cardUp 1s alternate infinite;
+  }
+  @keyframes cardUp {
+    to { transform: translateY(-5px) scale(1.03);}
+  }
+  .productlist .product-card:hover {
+    transform: scale(1.045) translateY(-8px) rotate(-2deg);
+    box-shadow: 0 10px 36px #27e9fb25;
+    border-color: #8d6fff;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 768px) {
+    .countdown-banner {padding: 1.6rem 0.8rem;}
+    .countdown-header {flex-direction: column; font-size: 0.8rem;}
+    .sale-container {padding: 1.1rem 0.5rem;}
+    .productlist {gap: 17px;}
+    .time-unit {padding: 0.8rem 1rem; min-width: 48px;}
+  }
+
+  
 
 /* 🔹 Featured Products Section */
 #featured-products {
@@ -946,7 +1185,6 @@ font-family: 'Playfair Display', serif;
   padding: 12px 16px;
   margin: 20px 0;
   text-align: center;
-  font-size: 20px;
   font-weight: 500;
   font-family: 'Secular one', sans-serif;
   color: #6d4c41;
@@ -1056,7 +1294,7 @@ font-family: 'Playfair Display', serif;
     }
 
     .farm-story h2 {
-        font-size: 26px;
+        font-size: 1.3rem;
         letter-spacing: 1px; /* Reduce spacing for mobile screens */
     }
 
@@ -1349,13 +1587,6 @@ html, body {
    
 }
 
-.countdown-banner h1 {
-    font-size: 26px;
-    font-weight: 50;
-    margin-bottom: 0px;
-    padding: 5px;
-}
-
 #countdown-timer {
   
     gap: 20px; /* Add spacing between time units */
@@ -1366,7 +1597,7 @@ html, body {
 
 .label {
    
-    font-size: 16px;
+    font-size: 11px;
     margin-bottom: 5px; /* Add space between label and time */
 }
 
@@ -1460,7 +1691,6 @@ html, body {
     line-height: 1.5; /* Improved readability */
     text-align: center;
     max-width: 90vw;
-    padding: 20px;
     align-self: center;
     margin: 0%;
     border-top:  #A91101 solid 0.5px;
@@ -1520,7 +1750,7 @@ body.loading {
     position: absolute;
     bottom: 20px;
     margin-bottom: 15vh;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-family: 'Secular one', sans-serif;
     font-weight: bold;
     text-align: center;
@@ -1545,247 +1775,3 @@ height: auto;
   /* Next-Level Neon & Glass CSS for Countdown & Sale */
 
 /* Essential fonts & overall setup */
-
-  /* Neon gradient glass banner */
-  .countdown-banner {
-    background: linear-gradient(120deg, #78ffa5 0%, #b97bfc 100%);
-    color: #fff;
-    padding: 3rem 2.5rem 2.5rem;
-    border-radius: 30px 30px 0 0 ;
-    margin: 40px auto 0;
-    max-width: 900px;
-    box-shadow: 0 8px 36px 0 rgba(47,63,255,0.09), 0 2px 12px 0 rgba(162,89,239,0.14);
-    position: relative;
-    overflow: visible;
-  }
-  
-  /* Countdown sale wrapper animation */
-  .countdown-sale-wrapper {
-    /* Scroll-based animation styles */
-    transform: translateX(-100%);
-    opacity: 0;
-    transition: transform 0.8s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  
-  @keyframes bannerEntrance {
-    from { opacity: 0; transform: scale(.93) translateY(30px);}
-    to   { opacity: 1; transform: scale(1) translateY(0);}
-  }
-  /* Header styles */
-  .countdown-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 1.2rem;
-    font-weight: 700;
-    font-size: 2rem;
-    letter-spacing: -1.2px;
-    margin-bottom: 1rem;
-  }
-  
-  .sale-icon {
-    font-size: 2.8rem;
-    color: #ffe632;
-    filter: drop-shadow(0 0 8px #ffe632cc);
-    animation: iconElectric 2s infinite cubic-bezier(0.5,0,1,1.2);
-  }
-  @keyframes iconElectric {
-    0%,100% { transform: scale(1) rotate(-8deg);}
-    10% { transform: scale(1.14) rotate(7deg);}
-    60% { transform: scale(.97) rotate(-8deg);}
-  }
-  
-  .sale-badge {
-    background: linear-gradient(90deg, #0bc2e6 0%, #9d3cff 100%);
-    box-shadow: 0 4px 22px 0 #925ae94d;
-    font-weight: 800;
-    color: #fff;
-    border-radius: 22px;
-    padding: 0.5rem 1.3rem;
-    font-size: 1.07rem;
-    margin-left: 0.8rem;
-    letter-spacing: .13em;
-    animation: badgeGlow 2s infinite alternate;
-  }
-  @keyframes badgeGlow {
-    50% { box-shadow: 0 0 16px 5px #FFFF67, 0 2px 22px 0 #27e9fb77;}
-  }
-  
-  /* Countdown glass timer */
-  .professional-timer {
-    display: flex;
-    justify-content: center;
-    gap: 28px;
-    margin: 1.3rem auto 1.1rem;
-  }
-  
-  .time-unit {
-    box-shadow: 0 4px 28px #2528ff12;
-    background: rgba(255,255,255,0.23);
-    border: 1.3px solid #fff5;
-    border-radius: 18px;
-    padding: 1.2rem 1.9rem;
-    min-width: 81px;
-    text-align: center;
-    backdrop-filter: blur(12px) saturate(160%);
-    transition: box-shadow .2s, background .2s;
-    animation: timerPop 1.5s infinite alternate;
-  }
-  @keyframes timerPop {
-    0% { box-shadow: 0 4px 16px #7256e94d; }
-    100% { box-shadow: 0 0px 30px #08e7fd77; }
-  }
-  
-  .label {
-    font-size: .87rem;
-    color: #dee0fd;
-    letter-spacing: .11em;
-    font-weight: 600;
-    margin-bottom: 6px;
-  }
-  
-  .time {
-    font-size: 2.45rem;
-    font-family: 'Share Tech Mono', 'Consolas', monospace;
-    font-weight: 800;
-    letter-spacing: .1em;
-    color: #fff;
-    text-shadow: 0 2px 12px #6d72fa66;
-    animation: countdownFlash .8s alternate infinite;
-  }
-  @keyframes countdownFlash {
-    0% { color: #fff;}
-    100% {color: #a9e6ff;}
-  }
-  
-  .sale-subtext {
-    color: #ecfcff;
-    font-size: 1.14rem;
-    margin-top: 20px;
-    filter: drop-shadow(0 2px 7px #08e7fd22);
-  }
-  
-  /* Sale product container */
-  .sale-container {
-    background: #fff;
-    max-width: 900px;
-    border-radius: 0 0 18px 18px;
-    padding: 32px 38px 28px;
-    margin: 0 auto 38px;
-    box-shadow: 0 2px 18px 0 rgba(47,63,255,0.08);
-  }
-  
-  .sale-header {
-    display: flex;
-    align-items: center;
-    gap: 1.05rem;
-    font-weight: 800;
-    font-size: 1.55rem;
-    margin-bottom: 15px;
-    font-family: 'secular one';
-  }
-  
-  .sale-header .accent {
-    color: #fb2727;
-    font-size: 2rem;
-    filter: drop-shadow(0 0 10px #27e9fb44);
-    animation: accentGrow 2s infinite alternate-reverse;
-  }
-  @keyframes accentGrow {
-    to { transform: scale(1.19);}
-  }
-  
-  .sale-timer-info {
-    font-size: .98rem;
-    color: #7266a9;
-    margin-left: auto;
-    font-weight: 500;
-  }
-  
-  /* Horizontal glowing scrollbar */
-  .scroll-container {
-    overflow-x: auto;
-    padding-bottom: 10px;
-  }
-  .scroll-container::-webkit-scrollbar {
-    height: 10px;
-  }
-  .scroll-container::-webkit-scrollbar-thumb {
-    background: linear-gradient(90deg, #27e9fb, #8e5dff);
-    border-radius: 30px;
-  }
-  .scroll-container::-webkit-scrollbar-track {
-    background: transparent;
-  }
-  
-  /* Sample product card placeholder styling */
-  .productlist {
-    display: flex;
-    gap: 28px;
-    padding: 1rem 0;
-    min-height: 170px;
-    scroll-behavior: smooth;
-    anchor-name: --scroll-button;
-  }
-  .productlist::scroll-button(right) , .productlist::scroll-button(left){
-    content:'»';
-    border: none;
-    color: white;
-    background-color: #a912017d;
-    font-size: 1.2rem;
-    height: 40px;
-    width: 40px;
-    padding-bottom: 0.3em;
-    border-radius: 50%;
-    cursor:pointer;
-  position: absolute;
-  anchor-name: --scroll-button;
- top: 40%;
- left:95%;
-  transition: ease-in-out 0.3s;
-  
-  }
-  .productlist::scroll-button(left){
-    content: '«';
-    position-area:right center;
-    left: 0%;
-  }
-  .productlist::scroll-button(right):hover , .productlist::scroll-button(left):hover{
-    background-color: #A91101;
-  }
-  .productlist::scroll-button(right):disabled , .productlist::scroll-button(left):disabled{
-    background-color: #a912012b;
-  }
-
-  .productlist .product-card {
-    background: linear-gradient(120deg, #fff 70%, #f4eaff 100%);
-    border-radius: 16px;
-    box-shadow: 0 2px 18px 0 rgba(47,63,255,0.11);
-    padding: 1rem 1.2rem;
-    min-width: 185px;
-    min-height: 130px;
-    transition: transform 0.22s cubic-bezier(.61,-0.08,.44,1.14), box-shadow 0.18s;
-    cursor: pointer;
-    border: 1.5px solid #dfe9fb;
-    position: relative;
-    animation: cardUp 1s alternate infinite;
-  }
-  @keyframes cardUp {
-    to { transform: translateY(-5px) scale(1.03);}
-  }
-  .productlist .product-card:hover {
-    transform: scale(1.045) translateY(-8px) rotate(-2deg);
-    box-shadow: 0 10px 36px #27e9fb25;
-    border-color: #8d6fff;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .countdown-banner {padding: 1.6rem 0.8rem;}
-    .countdown-header {flex-direction: column; font-size: 1.3rem;}
-    .sale-container {padding: 1.1rem 0.5rem;}
-    .productlist {gap: 17px;}
-    .time-unit {padding: 0.8rem 1rem; min-width: 48px;}
-  }
-
-  
